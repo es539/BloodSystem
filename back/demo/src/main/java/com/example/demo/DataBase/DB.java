@@ -1,6 +1,7 @@
 package com.example.demo.DataBase;
 
 import com.example.demo.Registration.authority;
+import com.example.demo.Registration.registration;
 
 import java.sql.*;
 
@@ -144,6 +145,65 @@ public class DB{
             return true;
         }
         return false;
+    }
+
+    public authority getAuthData(String tax, String pass){
+//        authority urData = registration.authData;       //from registration class
+        boolean ok = validateAuthority(tax, pass);
+        String QUERY = "SELECT * FROM systemdb.authority where tax = '"+tax+"';";
+        String QUERY1 = "SELECT * FROM systemdb.bagsnumber where tax = '"+tax+"';";
+        if (ok){
+            try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+                Statement stmt = conn.createStatement();
+                Statement stmt1 = conn.createStatement();
+
+            ) {
+                String sql = "USE systemdb";
+                stmt.executeUpdate(sql);
+                stmt1.executeUpdate(sql);
+                ResultSet rs = stmt.executeQuery(QUERY);
+                ResultSet rs1 = stmt1.executeQuery(QUERY1);
+
+                while(rs.next()){
+                    //Display values
+                    registration.authData.setEmail(rs.getString("email"));
+                    registration.authData.setPhone(rs.getString("phone"));
+                    registration.authData.setName(rs.getString("authName"));
+                    registration.authData.setAddress(rs.getString("address"));
+                    registration.authData.setCity(rs.getString("city"));
+                    registration.authData.setRegion(rs.getString("region"));
+                    registration.authData.setTax(rs.getString("tax"));
+                    registration.authData.setStartWork(rs.getString("workinghours_start"));
+                    registration.authData.setEndWork(rs.getString("workinghours_close"));
+                    registration.authData.setDonationtimeFrom(rs.getString("donationtimeFrom"));
+                    registration.authData.setDonationtimeTo(rs.getString("donationtimeTo"));
+                    System.out.print("email: " + rs.getString("email"));
+                    System.out.print(", name: " + rs.getString("authName"));
+                    System.out.print(", address: " + rs.getString("address"));
+                    System.out.print(", city: " + rs.getString("city"));
+                    System.out.print(", region: " + rs.getString("region"));
+                    System.out.println(", start working at: " + rs.getString("workinghours_start"));
+                    System.out.println(", close at: " + rs.getString("workinghours_close"));
+                    System.out.println(", donation time from: " + rs.getString("donationtimeFrom"));
+                    System.out.println(", donation time to: " + rs.getString("donationtimeTo"));
+
+                }
+                while(rs1.next()){
+                    registration.authData.setE_Aplus(rs1.getInt("Aplus_exist")); registration.authData.setN_Aplus(rs1.getInt("Aplus_needed"));
+                    registration.authData.setE_Aminus(rs1.getInt("Aminus_exist")); registration.authData.setN_Aminus(rs1.getInt("Aminus_needed"));
+                    registration.authData.setE_Bplus(rs1.getInt("Bplus_exist")); registration.authData.setN_Bplus(rs1.getInt("Bplus_needed"));
+                    registration.authData.setE_Bminus(rs1.getInt("Bminus_exist")); registration.authData.setN_Bminus(rs1.getInt("Bminus_needed"));
+                    registration.authData.setE_ABplus(rs1.getInt("ABplus_exist")); registration.authData.setN_ABplus(rs1.getInt("ABplus_needed"));
+                    registration.authData.setE_ABminus(rs1.getInt("ABminus_exist")); registration.authData.setN_ABminus(rs1.getInt("ABminus_needed"));
+                    registration.authData.setE_Oplus(rs1.getInt("Oplus_exist")); registration.authData.setN_Oplus(rs1.getInt("Oplus_needed"));
+                    registration.authData.setE_Ominus(rs1.getInt("Ominus_exist")); registration.authData.setN_Ominus(rs1.getInt("Ominus_needed"));
+                }
+                return registration.authData;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 
 }
