@@ -60,5 +60,29 @@ public class registration {
         return "False";
     }
 
+    @GetMapping("/signUpI")
+    public String signUp(@RequestParam long id,@RequestParam String pass, @RequestParam String name,
+                         @RequestParam int age, @RequestParam int weight,@RequestParam String BT,
+                         @RequestParam String adrs, @RequestParam String region){
+        DB adding = new DB();
+        userData.setId(id);
+        userData.setPassword(pass);
+        userData.setName(name);
+        userData.setAge(age);
+        userData.setWeight(weight);
+        userData.setBloodtype(BT);
+        userData.setAddress(adrs);
+        userData.setRegion(region);
+
+        String response;
+        if(adding.checkForNoduplicateUsers(id)==false){
+            response = adding.addUser(userData);
+        }else{
+            response = "invalid";
+        }
+        return response;
+    }
+
+
 
 }
