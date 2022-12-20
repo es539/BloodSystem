@@ -35,5 +35,17 @@ public class registration {
         return response;
     }
 
+    @GetMapping("/signInA")
+    public String signIn(@RequestParam String tax, @RequestParam String password){
+        registrationController x = new registrationController();
+        boolean valid = x.validateAuthorityInfo(tax, password);
+        if (valid){
+            DB profile = new DB();
+            authData = profile.getAuthData(tax, password);
+            return "True";
+        }
+        return "False";
+    }
+
 
 }
