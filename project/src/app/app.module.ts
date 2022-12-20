@@ -10,6 +10,8 @@ import { signInAComponent } from './signIn-Authority/signInA.component'
 import { signInIComponent } from './signIn-Individual/signInI.component'
 import { signUpIComponent } from './signUp-Individual/signUpI.component'
 import { profileAComponent } from './profile-Authority/profileA.component'
+import { profileIComponent } from './profile-Individual/profileI.component'
+
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
@@ -21,7 +23,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
     signInAComponent,
     signInIComponent,
     signUpIComponent,
-    profileAComponent
+    profileAComponent,
+    profileIComponent
   ],
   imports: [
     BrowserModule,
