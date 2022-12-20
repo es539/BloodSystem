@@ -47,5 +47,18 @@ public class registration {
         return "False";
     }
 
+    public static user userData = new user();
+    @GetMapping("/signInI")
+    public String signIn(@RequestParam long id, @RequestParam String password){
+        registrationController x = new registrationController();
+        boolean valid = x.validateUserInfo(id, password);
+        if (valid){
+            DB profile = new DB();
+            userData = profile.getUserData(id, password);
+            return "True";
+        }
+        return "False";
+    }
+
 
 }

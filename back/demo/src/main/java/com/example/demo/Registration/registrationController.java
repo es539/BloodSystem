@@ -12,4 +12,12 @@ public class registrationController {
         }
         return false;
     }
+
+    public boolean validateUserInfo( long id,  String password){
+        DB start = new DB();
+        Boolean V = start.validateUser(id,password);
+        if(V)
+            return true;
+        return false;
+    }
 }
