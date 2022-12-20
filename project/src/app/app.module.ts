@@ -5,14 +5,14 @@ import{ HttpClientModule }from'@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-
+import { signUpAComponent } from './signUp-Authority/signUpA.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
   declarations: [
     AppComponent, 
     HomeComponent,
-   
+    signUpAComponent
   ],
   imports: [
     BrowserModule,
