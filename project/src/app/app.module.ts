@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { signUpAComponent } from './signUp-Authority/signUpA.component'
 import { signInAComponent } from './signIn-Authority/signInA.component'
 import { signInIComponent } from './signIn-Individual/signInI.component'
+import { signUpIComponent } from './signUp-Individual/signUpI.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
@@ -16,7 +17,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
     HomeComponent,
     signUpAComponent,
     signInAComponent,
-    signInIComponent
+    signInIComponent,
+    signUpIComponent
   ],
   imports: [
     BrowserModule,
