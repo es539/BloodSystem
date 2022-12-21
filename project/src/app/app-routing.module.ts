@@ -6,7 +6,6 @@ import { signInAComponent } from './signIn-Authority/signInA.component'
 import { signInIComponent } from './signIn-Individual/signInI.component'
 import { signUpIComponent } from './signUp-Individual/signUpI.component'
 import { profileAComponent } from './profile-Authority/profileA.component'
-import { profileIComponent } from './profile-Individual/profileI.component'
 
 
 const routes: Routes = [
@@ -16,8 +15,7 @@ const routes: Routes = [
   { path: 'signInA', component:signInAComponent},
   { path: 'signInI', component:signInIComponent},
   { path: 'signUpI', component:signUpIComponent},
-  { path: 'profileA', component:profileAComponent},
-  { path: 'profileI', component:profileIComponent},
+  { path: 'profileA', component:profileAComponent}
 ];
 
 @NgModule({
