@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 @RequestMapping("/savior")
 
-public class modifyAcc {
+public class ModifyAcc {
 
     public static User userAcc = new User();
 

@@ -34,5 +34,29 @@ class ModifyDBTest {
         myauth.setN_Oplus(4);myauth.setE_Oplus(4);myauth.setN_Ominus(4);myauth.setE_Ominus(4);
         assertEquals(test.editAuthProfile(myauth),"valid");
     }
+//forgot password for user
+    @Test
+    void givenRightIdThenValid(){
+        ModifyDB test = new ModifyDB();
+        assertEquals(test.modifyUserPass(210603, "123456789"), "valid");
+    }
 
+    @Test
+    void givenWrnogIdThenInvalid(){
+        ModifyDB test = new ModifyDB();
+        assertEquals(test.modifyUserPass(2106031, "123456789"), "invalid");
+    }
+
+//forgot password for authority
+@Test
+void givenRightTaxThenValid(){
+    ModifyDB test = new ModifyDB();
+    assertEquals(test.modifyAuthorityPass("108867201", "123456789"), "valid");
+}
+
+    @Test
+    void givenWrnogTaxThenInvalid(){
+        ModifyDB test = new ModifyDB();
+        assertEquals(test.modifyAuthorityPass("1088672011", "123456789"), "invalid");
+    }
 }
