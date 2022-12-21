@@ -3,63 +3,52 @@ package com.example.demo.Registration;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class registrationTest {
     @Test
-    void givenRightidandRightpasswordThenNotNull() {
-        registration test = new registration();
-        assertNotNull(test.signIn(110756,"shoee45"));
+    void givenRightIdAndRightPasswordThenTrue() {
+        Registration test = new Registration();
+        assertEquals(test.signIn(110756,"9710910511497505353"), "True");
     }
     @Test
-    void givenRightidandWrongpasswordThenNull() {
-        registration test = new registration();
-        assertNull(test.signIn(110756,"she45"));
+    void givenRightIdAndWrongPasswordThenFalse() {
+        Registration test = new Registration();
+        assertEquals(test.signIn(110756,"971"), "False");
     }
     @Test
-    void givenWrongidandRightpasswordThenNull() {
-        registration test = new registration();
-        assertNull(test.signIn(1101756,"shoee45"));
+    void givenWrongIdAndRightPasswordThenFalse() {
+        Registration test = new Registration();
+        assertEquals(test.signIn(123,"9710910511497505353"), "False");
     }
     @Test
-    void givenWrongidandWrongpasswordThenNull() {
-        registration test = new registration();
-        assertNull(test.signIn(1107556,"ee45"));
+    void givenWrongIdAndWrongPasswordThenFalse() {
+        Registration test = new Registration();
+        assertEquals(test.signIn(123,"971091"), "False");
     }
 
 
 
     //authority sign in
     @Test
-    void givenRightemailandRightpasswordThenNotNull() {
-        registration test = new registration();
-        assertNotNull(test.signIn("dar.dar.dar@gmail.com","123456789"));
+    void givenRightTaxAndRightPasswordThenTrue() {
+        Registration test = new Registration();
+        assertEquals(test.signIn("108867201","115971089710911697107115971089710911697107"), "True");
     }
     @Test
-    void givenRightemailandWrongpasswordThenNull() {
-        registration test = new registration();
-        assertNull(test.signIn("gg@gmail.com","d5ddd"));
+    void givenRightTaxAndWrongPasswordThenFalse() {
+        Registration test = new Registration();
+        assertEquals(test.signIn(108867201,"115971"), "False");
     }
     @Test
-    void givenWrongemailandRightpasswordThenNull() {
-        registration test = new registration();
-        assertNull(test.signIn("gg@gmmail.com","d5d"));
+    void givenWrongTaxAndRightPasswordThenFalse() {
+        Registration test = new Registration();
+        assertEquals(test.signIn(108,"115971089710911697107115971089710911697107"), "False");
     }
     @Test
-    void givenWrongemailandWrongpasswordThenNull() {
-        registration test = new registration();
-        assertNull(test.signIn("gg@gmmail.com","d5dd"));
+    void givenWrongTaxAndWrongPasswordThenFalse() {
+        Registration test = new Registration();
+        assertEquals(test.signIn("108","123"), "False");
     }
-
-
-    //user sign up
-/*    @Test
-
-    void givenDataThenSignup() {
-        registration test = Mockito.mock(registration.class);
-        test.signUp(110756,"shoee45","aly",26,59,"B+","sidi gabed, alexandria, egypt");
-        verify(test).signUp(110756,"shoee45","aly",26,59,"B+","sidi gabed, alexandria, egypt");
-    }*/
 
 }
