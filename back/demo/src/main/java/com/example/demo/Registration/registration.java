@@ -161,4 +161,32 @@ public class registration {
     public String gNeed_Ominus(){ return String.valueOf(authData.getN_Ominus()); }
 
 
+    @GetMapping("/gUn")
+    public String gUserName(){
+        return userData.getName();
+    }
+    @GetMapping("/gUi")
+    public String gUserId(){ return  String.valueOf(userData.getId()); }
+    @GetMapping("/gUa")
+    public String gUserAddress(){
+        return userData.getAddress();
+    }
+    @GetMapping("/gUr")
+    public String gUserRegion(){ return userData.getRegion(); }
+
+    @GetMapping("/gUc")
+    public String gUserCity(){
+        DB db = new DB();
+        return db.getCity(userData.getRegion()); }
+
+    @GetMapping("/gUw")
+    public String gUserWeight(){ return String.valueOf(userData.getWeight()); }
+    @GetMapping("/gUg")
+    public String gUserAge(){ return String.valueOf(userData.getAge()); }
+    @GetMapping("/gUt")
+    public String gUserType(){
+        return userData.getBloodtype();
+    }
+
+
 }

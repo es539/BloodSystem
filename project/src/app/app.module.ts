@@ -11,6 +11,7 @@ import { signInIComponent } from './signIn-Individual/signInI.component'
 import { signUpIComponent } from './signUp-Individual/signUpI.component'
 import { profileAComponent } from './profile-Authority/profileA.component'
 
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
