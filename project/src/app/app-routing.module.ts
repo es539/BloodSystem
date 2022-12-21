@@ -25,6 +25,8 @@ const routes: Routes = [
   { path: 'EditA', component:EditAComponent},
   { path: 'EditI', component:EditIComponent},
   { path: 'forgotA', component:ForgotPasswordAComponent},
+  { path: 'forgotI', component:ForgotPasswordIComponent},
+  { path: 'forgotA', component:ForgotPasswordAComponent},
   { path: 'forgotI', component:ForgotPasswordIComponent}
 ];
 
