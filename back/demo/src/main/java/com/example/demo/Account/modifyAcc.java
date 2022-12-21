@@ -9,6 +9,25 @@ import org.springframework.web.bind.annotation.*;
 
 public class modifyAcc {
 
+    public static User userAcc = new User();
+
+    @GetMapping("/editAccI")
+    public String editeProfile(@RequestParam String pass, @RequestParam String name,
+                               @RequestParam int age, @RequestParam int weight,@RequestParam String BT,
+                               @RequestParam String adrs, @RequestParam String region){
+
+        Registration.userData.setPassword(pass);
+        Registration.userData.setName(name);
+        Registration.userData.setAge(age);
+        Registration.userData.setWeight(weight);
+        Registration.userData.setBloodtype(BT);
+        Registration.userData.setAddress(adrs);
+
+        ModifyDB modification = new ModifyDB();
+        String response = modification.editUserProfile(Registration.userData);
+        return response;
+    }
+
     public static Authority authAcc = new Authority();
     @GetMapping("/editAccA")
     public String editeProfileAuthority(@RequestParam String email, @RequestParam String phone, @RequestParam String pass, @RequestParam String name,
