@@ -298,6 +298,7 @@ export class signUpAComponent implements OnInit {
       }
       else if(this.response=="invalid"){
         console.log("has not received Done from back")
+        alert('there is already an account for this tax registration number')
       }
       else{
         alert("INVALID!")
