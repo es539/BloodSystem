@@ -13,6 +13,8 @@ import { profileAComponent } from './profile-Authority/profileA.component'
 import { profileIComponent } from './profile-Individual/profileI.component'
 import { EditAComponent } from './Edit-profile-Authority/EditA.component'
 import { EditIComponent } from './Edit-Profile-Individual/EditI.component'
+import { ForgotPasswordAComponent } from './forgot-pass-Authority/forgotPassA.component';
+import { ForgotPasswordIComponent } from './forgot-pass-Individual/forgotPassI.component';
 
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
@@ -28,7 +30,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
     profileAComponent,
     profileIComponent,
     EditAComponent,
-    EditIComponent
+    EditIComponent,
+    ForgotPasswordAComponent,
+    ForgotPasswordIComponent
   ],
   imports: [
     BrowserModule,

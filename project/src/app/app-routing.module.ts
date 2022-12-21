@@ -9,6 +9,8 @@ import { profileAComponent } from './profile-Authority/profileA.component'
 import { profileIComponent } from './profile-Individual/profileI.component'
 import { EditAComponent } from './Edit-profile-Authority/EditA.component'
 import { EditIComponent } from './Edit-Profile-Individual/EditI.component'
+import { ForgotPasswordAComponent } from './forgot-pass-Authority/forgotPassA.component';
+import { ForgotPasswordIComponent } from './forgot-pass-Individual/forgotPassI.component';
 
 
 const routes: Routes = [
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path: 'profileI', component:profileIComponent},
   { path: 'EditA', component:EditAComponent},
   { path: 'EditI', component:EditIComponent},
+  { path: 'forgotA', component:ForgotPasswordAComponent},
+  { path: 'forgotI', component:ForgotPasswordIComponent}
 ];
 
 @NgModule({
