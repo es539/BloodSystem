@@ -12,7 +12,7 @@ import { signUpIComponent } from './signUp-Individual/signUpI.component'
 import { profileAComponent } from './profile-Authority/profileA.component'
 import { profileIComponent } from './profile-Individual/profileI.component'
 import { EditAComponent } from './Edit-profile-Authority/EditA.component'
-
+import { EditIComponent } from './Edit-Profile-Individual/EditI.component'
 
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
@@ -27,7 +27,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
     signUpIComponent,
     profileAComponent,
     profileIComponent,
-    EditAComponent
+    EditAComponent,
+    EditIComponent
   ],
   imports: [
     BrowserModule,
