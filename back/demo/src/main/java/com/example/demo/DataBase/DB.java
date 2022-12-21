@@ -1,67 +1,15 @@
 package com.example.demo.DataBase;
-import com.example.demo.Registration.*;
+
+import com.example.demo.Registration.authority;
+import com.example.demo.Registration.registration;
+import com.example.demo.Registration.user;
+
 import java.sql.*;
 
 public class DB{
     static final String DB_URL = "jdbc:mysql://localhost:3306";
     static final String USER = "root";
     static final String PASS = "2972001333";
-
-    public String addUser(user newuser){
-        boolean valid = validateID(newuser.getId());
-        if (valid) {
-            final String QUERY = "insert into userprofile values(" + newuser.getId() + ",\"" +
-                    newuser.getPassword() + "\",\"" + newuser.getName() + "\"," + newuser.getAge()
-                    + "," + newuser.getWeight() + ",\"" + newuser.getBloodtype() + "\",\"" +
-                    newuser.getAddress() + "\",\"" + newuser.getCity() + "\",\"" + newuser.getRegion() + "\");";
-            System.out.println(QUERY);
-            try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-                Statement stmt = conn.createStatement();
-            ) {
-                String sql = "USE systemdb";
-                stmt.executeUpdate(sql);
-                stmt.executeUpdate(QUERY);
-                System.out.println("User profile created successfully...");
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-            return "valid";
-        }
-        else {
-            System.out.println("please enter correct info");
-            return "invalid";
-        }
-    }
-
-    public boolean validateID(long id) {
-        final String QUERY = "SELECT EXISTS(SELECT * from civilregistry WHERE id=" + id + ");";
-        // Open a connection
-        try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-             Statement stmt = conn.createStatement();
-        ) {
-            String sql = "USE systemdb";
-            stmt.executeUpdate(sql);
-            ResultSet rs = stmt.executeQuery(QUERY);
-            int valid = -1;
-            while (rs.next()) {
-                //Display values
-                valid = rs.getInt("EXISTS(SELECT * from civilregistry WHERE id=" + id + ")");
-            }
-            if (valid == 1) {
-                System.out.println("valid id");
-                return true;
-            } else if (valid == 0) {
-                System.out.println("invalid id");
-                return false;
-            }
-        } catch (SQLException e) {
-
-            e.printStackTrace();
-        }
-        return false;
-    }
-
     public boolean validateTAX(String tax) {
         final String QUERY = "SELECT EXISTS(SELECT * from authoritytax WHERE tax=" + tax + ");";
         // Open a connection
@@ -131,140 +79,6 @@ public class DB{
 
     }
 
-    ///signing in
-    public boolean validateUser(long id, String pass){
-        String QUERY = "SELECT EXISTS(SELECT * from userprofile WHERE id=" + id + ");";
-        String QUERY2 = "SELECT userpassword from userprofile WHERE id=" + id + ";";
-        // Open a connection
-        try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-             Statement stmt = conn.createStatement();
-
-        ) {
-            String sql = "USE systemdb";
-            stmt.executeUpdate(sql);
-            ResultSet rs = stmt.executeQuery(QUERY);
-
-            int valid = -1;
-            while (rs.next()) {
-                //Display values
-                valid = rs.getInt("EXISTS(SELECT * from userprofile WHERE id=" + id + ")");
-            }
-            if (valid == 1) {
-                rs = stmt.executeQuery(QUERY2);
-                while (rs.next()) {
-                    //Display values
-                    String x = rs.getString("userpassword");
-                    if(x.equals(pass)){
-                        valid = 1;
-                    }else {
-                        valid = 0;
-                    }
-                }
-                if (valid == 1){
-                    return true;
-                }else {
-                    System.out.println("incorrect password");
-                    return false;
-                }
-            } else if (valid == 0) {
-                System.out.println("invalid id");
-                return false;
-            }
-        } catch (SQLException e) {
-
-            e.printStackTrace();
-        }
-        return false;
-
-    }
-
-    public boolean checkForNoduplicateUsers(long id){
-        int num=0;
-        DB start = new DB();
-        final String QUERY = "select count(*) from userprofile where id="+id+";";
-        System.out.println(QUERY);
-        try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            Statement stmt = conn.createStatement();
-        ) {
-            String sql = "USE systemdb";
-            stmt.executeUpdate(sql);
-            ResultSet rs = stmt.executeQuery(QUERY);
-            while (rs.next()) {
-                num = rs.getInt("count(*)");
-                System.out.println("rs=="+num);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        if(num!=0){
-            return true;
-        }
-        return false;
-    }
-
-    public user getUserData(long id, String pass){
-//        user urData = new user();
-        boolean ok = validateUser(id,pass);
-        String QUERY = "SELECT * FROM systemdb.userprofile where id = "+id+";";
-        if (ok){
-            try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-                Statement stmt = conn.createStatement();
-
-            ) {
-                String sql = "USE systemdb";
-                stmt.executeUpdate(sql);
-                ResultSet rs = stmt.executeQuery(QUERY);
-
-                while(rs.next()){
-                    //Display values
-                    registration.userData.setId(rs.getLong("id"));registration.userData.setName(rs.getString("userName"));
-                    registration.userData.setAge(rs.getInt("age"));registration.userData.setWeight(rs.getInt("weight"));
-                    registration.userData.setBloodtype(rs.getString("bloodtype"));
-                    registration.userData.setAddress(rs.getString("address")); registration.userData.setRegion(rs.getString("region"));
-                    System.out.print("ID: " + rs.getLong("id"));
-                    System.out.print(", Name: " + rs.getString("userName"));
-                    System.out.print(", age: " + rs.getInt("age"));
-                    System.out.println(", weight: " + rs.getInt("weight"));
-                    System.out.println(", blood type: " + rs.getString("bloodtype"));
-                    System.out.println(", address: " + rs.getString("address"));
-                    System.out.println(", region: " + rs.getString("region"));
-                }
-                return registration.userData;
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }else {
-            System.out.println("Invalid data");
-            return null;
-        }
-        return null;
-
-    }
-
-    public String getCity(String region){
-        String city = "" ;
-        String QUERY = "SELECT city FROM systemdb.regions where region = " + "\"" + region + "\"" + ";";
-//        System.out.println(QUERY);
-        try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            Statement stmt = conn.createStatement();
-
-        ) {
-            String sql = "USE systemdb";
-            stmt.executeUpdate(sql);
-            ResultSet rs = stmt.executeQuery(QUERY);
-            while(rs.next()){
-                city = rs.getString("city");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return city;
-    }
-
-
-
-
-    ///authority
     public boolean validateAuthority(String tax, String pass){
         String QUERY = "SELECT EXISTS(SELECT * from authority WHERE tax='" +tax + "');";
         String QUERY2 = "SELECT authpassword from authority WHERE tax='" + tax + "';";
@@ -310,7 +124,6 @@ public class DB{
         return false;
 
     }
-
     public boolean checkForNoduplicateAuthorities(String tax){
         int num=0;
         DB start = new DB();
@@ -393,5 +206,190 @@ public class DB{
         }
         return null;
     }
+
+    public boolean validateUser(long id, String pass){
+        String QUERY = "SELECT EXISTS(SELECT * from userprofile WHERE id=" + id + ");";
+        String QUERY2 = "SELECT userpassword from userprofile WHERE id=" + id + ";";
+        // Open a connection
+        try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+             Statement stmt = conn.createStatement();
+
+        ) {
+            String sql = "USE systemdb";
+            stmt.executeUpdate(sql);
+            ResultSet rs = stmt.executeQuery(QUERY);
+
+            int valid = -1;
+            while (rs.next()) {
+                //Display values
+                valid = rs.getInt("EXISTS(SELECT * from userprofile WHERE id=" + id + ")");
+            }
+            if (valid == 1) {
+                rs = stmt.executeQuery(QUERY2);
+                while (rs.next()) {
+                    //Display values
+                    String x = rs.getString("userpassword");
+                    if(x.equals(pass)){
+                        valid = 1;
+                    }else {
+                        valid = 0;
+                    }
+                }
+                if (valid == 1){
+                    return true;
+                }else {
+                    System.out.println("incorrect password");
+                    return false;
+                }
+            } else if (valid == 0) {
+                System.out.println("invalid id");
+                return false;
+            }
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+        return false;
+
+    }
+
+    public user getUserData(long id, String pass){
+//        user urData = new user();
+        boolean ok = validateUser(id,pass);
+        String QUERY = "SELECT * FROM systemdb.userprofile where id = "+id+";";
+        if (ok){
+            try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+                Statement stmt = conn.createStatement();
+
+            ) {
+                String sql = "USE systemdb";
+                stmt.executeUpdate(sql);
+                ResultSet rs = stmt.executeQuery(QUERY);
+
+                while(rs.next()){
+                    //Display values
+                    registration.userData.setId(rs.getLong("id"));registration.userData.setName(rs.getString("userName"));
+                    registration.userData.setAge(rs.getInt("age"));registration.userData.setWeight(rs.getInt("weight"));
+                    registration.userData.setBloodtype(rs.getString("bloodtype"));
+                    registration.userData.setAddress(rs.getString("address")); registration.userData.setRegion(rs.getString("region"));
+                    System.out.print("ID: " + rs.getLong("id"));
+                    System.out.print(", Name: " + rs.getString("userName"));
+                    System.out.print(", age: " + rs.getInt("age"));
+                    System.out.println(", weight: " + rs.getInt("weight"));
+                    System.out.println(", blood type: " + rs.getString("bloodtype"));
+                    System.out.println(", address: " + rs.getString("address"));
+                    System.out.println(", region: " + rs.getString("region"));
+                }
+                return registration.userData;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }else {
+            System.out.println("Invalid data");
+            return null;
+        }
+        return null;
+
+    }
+
+    public String addUser(user newuser){
+        boolean valid = validateID(newuser.getId());
+        if (valid) {
+            final String QUERY = "insert into userprofile values(" + newuser.getId() + ",\"" +
+                    newuser.getPassword() + "\",\"" + newuser.getName() + "\"," + newuser.getAge()
+                    + "," + newuser.getWeight() + ",\"" + newuser.getBloodtype() + "\",\"" +
+                    newuser.getAddress() + "\",\"" + newuser.getCity() + "\",\"" + newuser.getRegion() + "\");";
+            System.out.println(QUERY);
+            try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+                Statement stmt = conn.createStatement();
+            ) {
+                String sql = "USE systemdb";
+                stmt.executeUpdate(sql);
+                stmt.executeUpdate(QUERY);
+                System.out.println("User profile created successfully...");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            return "valid";
+        }
+        else {
+            System.out.println("please enter correct info");
+            return "invalid";
+        }
+    }
+
+    public boolean validateID(long id) {
+        final String QUERY = "SELECT EXISTS(SELECT * from civilregistry WHERE id=" + id + ");";
+        // Open a connection
+        try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+             Statement stmt = conn.createStatement();
+        ) {
+            String sql = "USE systemdb";
+            stmt.executeUpdate(sql);
+            ResultSet rs = stmt.executeQuery(QUERY);
+            int valid = -1;
+            while (rs.next()) {
+                //Display values
+                valid = rs.getInt("EXISTS(SELECT * from civilregistry WHERE id=" + id + ")");
+            }
+            if (valid == 1) {
+                System.out.println("valid id");
+                return true;
+            } else if (valid == 0) {
+                System.out.println("invalid id");
+                return false;
+            }
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean checkForNoduplicateUsers(long id){
+        int num=0;
+        DB start = new DB();
+        final String QUERY = "select count(*) from userprofile where id="+id+";";
+        System.out.println(QUERY);
+        try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement stmt = conn.createStatement();
+        ) {
+            String sql = "USE systemdb";
+            stmt.executeUpdate(sql);
+            ResultSet rs = stmt.executeQuery(QUERY);
+            while (rs.next()) {
+                num = rs.getInt("count(*)");
+                System.out.println("rs=="+num);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if(num!=0){
+            return true;
+        }
+        return false;
+    }
+
+    public String getCity(String region){
+        String city = "" ;
+        String QUERY = "SELECT city FROM systemdb.regions where region = " + "\"" + region + "\"" + ";";
+//        System.out.println(QUERY);
+        try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement stmt = conn.createStatement();
+
+        ) {
+            String sql = "USE systemdb";
+            stmt.executeUpdate(sql);
+            ResultSet rs = stmt.executeQuery(QUERY);
+            while(rs.next()){
+                city = rs.getString("city");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return city;
+    }
+
 
 }
