@@ -17,7 +17,7 @@ import { ForgotPasswordAComponent } from './forgot-pass-Authority/forgotPassA.co
 import { ForgotPasswordIComponent } from './forgot-pass-Individual/forgotPassI.component';
 import { WelcomeAComponent } from './welcome-Authority/welcomeA.component'
 import { WelcomeIComponent } from './welcome-Individual/welcomeI.component'
-
+import { DonationComponent } from './donation/donation.component'
 
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
@@ -37,7 +37,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
     ForgotPasswordAComponent,
     ForgotPasswordIComponent,
     WelcomeAComponent,
-    WelcomeIComponent
+    WelcomeIComponent,
+    DonationComponent
   ],
   imports: [
     BrowserModule,
