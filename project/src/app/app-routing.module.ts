@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { WelcomeAComponent } from './welcome-Authority/welcomeA.component';
-import { WelcomeIComponent } from './welcome-Individual/welcomeI.component';
 import { signUpAComponent } from './signUp-Authority/signUpA.component'
 import { signInAComponent } from './signIn-Authority/signInA.component'
 import { signInIComponent } from './signIn-Individual/signInI.component'
@@ -29,9 +27,7 @@ const routes: Routes = [
   { path: 'forgotA', component:ForgotPasswordAComponent},
   { path: 'forgotI', component:ForgotPasswordIComponent},
   { path: 'forgotA', component:ForgotPasswordAComponent},
-  { path: 'forgotI', component:ForgotPasswordIComponent},
-  { path: 'welcomeA', component:WelcomeAComponent},
-  { path: 'welcomeI', component:WelcomeIComponent}
+  { path: 'forgotI', component:ForgotPasswordIComponent}
 ];
 
 @NgModule({
