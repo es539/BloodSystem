@@ -37,6 +37,58 @@ public class modifyDB {
         return response;
     }
 
+    @GetMapping("/modifyPassI")
+    public String modifyUserPass(@RequestParam long id , @RequestParam String pass){
+        DB start = new DB();
+        String response;
+        if(start.checkForNoduplicateUsers(id)==false){   //this id has no account
+            response = "invalid";
+        }else {
+            try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+                 Statement stmt = conn.createStatement();
+            ) {
+                String sql = "USE systemdb";
+                stmt.executeUpdate(sql);
+                String QUERY = "update userprofile set userpassword =\"" + pass + "\" " + "where id =" + id;
+                System.out.println(QUERY);
+                stmt.executeUpdate(QUERY);
+//                registration.userData.setPassword(pass);
+                DB profile = new DB();
+                registration.userData = profile.getUserData(id, pass);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            response = "valid";
+        }
+        return response;
+    }
+
+    @GetMapping("/modifyPassA")
+    public String modifyAuthorityPass(@RequestParam String tax , @RequestParam String pass){
+        DB start = new DB();
+        String response;
+        if(start.checkForNoduplicateAuthorities(tax)==false){   //this tax has no account
+            response = "invalid";
+        }else {
+            try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+                 Statement stmt = conn.createStatement();
+            ) {
+                String sql = "USE systemdb";
+                stmt.executeUpdate(sql);
+                String QUERY = "update authority set authpassword =\"" + pass + "\" " + "where tax =\"" + tax + "\"" + ";";
+                System.out.println(QUERY);
+                stmt.executeUpdate(QUERY);
+                //registration.authData.setPassword(pass);
+                DB profile = new DB();
+                registration.authData = profile.getAuthData(tax, pass);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            response = "valid";
+        }
+        return response;
+    }
+
     public String editUserProfile(user userAcc) {
         String response = "valid";
         try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
