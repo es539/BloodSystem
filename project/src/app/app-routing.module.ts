@@ -7,7 +7,7 @@ import { signInIComponent } from './signIn-Individual/signInI.component'
 import { signUpIComponent } from './signUp-Individual/signUpI.component'
 import { profileAComponent } from './profile-Authority/profileA.component'
 import { profileIComponent } from './profile-Individual/profileI.component'
-
+import { EditAComponent } from './Edit-profile-Authority/EditA.component'
 
 
 const routes: Routes = [
@@ -18,7 +18,8 @@ const routes: Routes = [
   { path: 'signInI', component:signInIComponent},
   { path: 'signUpI', component:signUpIComponent},
   { path: 'profileA', component:profileAComponent},
-  { path: 'profileI', component:profileIComponent}
+  { path: 'profileI', component:profileIComponent},
+  { path: 'EditA', component:EditAComponent},
   
 ];
 
