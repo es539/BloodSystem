@@ -7,6 +7,7 @@ import { signInIComponent } from './signIn-Individual/signInI.component'
 import { signUpIComponent } from './signUp-Individual/signUpI.component'
 import { profileAComponent } from './profile-Authority/profileA.component'
 
+
 const routes: Routes = [
   { path: '' ,redirectTo: 'home' , pathMatch: 'full' },
   { path: 'home', component:HomeComponent},
