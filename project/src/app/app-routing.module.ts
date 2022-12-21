@@ -11,7 +11,7 @@ import { EditAComponent } from './Edit-profile-Authority/EditA.component'
 import { EditIComponent } from './Edit-Profile-Individual/EditI.component'
 import { ForgotPasswordAComponent } from './forgot-pass-Authority/forgotPassA.component';
 import { ForgotPasswordIComponent } from './forgot-pass-Individual/forgotPassI.component';
-
+import { DonationComponent } from './donation/donation.component'
 
 const routes: Routes = [
   { path: '' ,redirectTo: 'home' , pathMatch: 'full' },
@@ -27,7 +27,8 @@ const routes: Routes = [
   { path: 'forgotA', component:ForgotPasswordAComponent},
   { path: 'forgotI', component:ForgotPasswordIComponent},
   { path: 'forgotA', component:ForgotPasswordAComponent},
-  { path: 'forgotI', component:ForgotPasswordIComponent}
+  { path: 'forgotI', component:ForgotPasswordIComponent},
+  { path: 'donation', component:DonationComponent}
 ];
 
 @NgModule({
