@@ -14,7 +14,7 @@ import { EditIComponent } from './Edit-Profile-Individual/EditI.component'
 import { ForgotPasswordAComponent } from './forgot-pass-Authority/forgotPassA.component';
 import { ForgotPasswordIComponent } from './forgot-pass-Individual/forgotPassI.component';
 import { DonationComponent } from './donation/donation.component'
-import { HelperComponent } from './Helper/Helper.component';
+import { HelperComponent } from './Helper/Helper.component'
 
 const routes: Routes = [
   { path: '' ,redirectTo: 'home' , pathMatch: 'full' },
