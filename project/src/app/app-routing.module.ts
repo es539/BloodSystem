@@ -8,6 +8,7 @@ import { signUpIComponent } from './signUp-Individual/signUpI.component'
 import { profileAComponent } from './profile-Authority/profileA.component'
 import { profileIComponent } from './profile-Individual/profileI.component'
 import { EditAComponent } from './Edit-profile-Authority/EditA.component'
+import { EditIComponent } from './Edit-Profile-Individual/EditI.component'
 
 
 const routes: Routes = [
@@ -20,7 +21,7 @@ const routes: Routes = [
   { path: 'profileA', component:profileAComponent},
   { path: 'profileI', component:profileIComponent},
   { path: 'EditA', component:EditAComponent},
-  
+  { path: 'EditI', component:EditIComponent},
 ];
 
 @NgModule({

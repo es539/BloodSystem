@@ -3,9 +3,8 @@ package com.example.demo.DataBase;
 
 import com.example.demo.Registration.authority;
 import com.example.demo.Registration.registration;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.demo.Registration.user;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,6 +19,82 @@ public class modifyDB {
     static final String USER = "root";
     static final String PASS = "2972001333";
 
+    public static user userAcc = new user();
+    @GetMapping("/editAccI")
+    public String editeProfile(@RequestParam String pass, @RequestParam String name,
+                               @RequestParam int age, @RequestParam int weight, @RequestParam String BT,
+                               @RequestParam String adrs, @RequestParam String region){
+
+        registration.userData.setPassword(pass);
+        registration.userData.setName(name);
+        registration.userData.setAge(age);
+        registration.userData.setWeight(weight);
+        registration.userData.setBloodtype(BT);
+        registration.userData.setAddress(adrs);
+
+        modifyDB modification = new modifyDB();
+        String response = modification.editUserProfile(registration.userData);
+        return response;
+    }
+
+    public String editUserProfile(user userAcc) {
+        String response = "valid";
+        try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+             Statement stmt = conn.createStatement();
+        ) {
+            String sql = "USE systemdb";
+            stmt.executeUpdate(sql);
+            if (userAcc.getName() != null) {
+                final String QUERY = "UPDATE userProfile SET userName = '" + userAcc.getName() + "' WHERE id = " + registration.userData.getId() + ";";
+                stmt.executeUpdate(QUERY);
+                System.out.println("name updated successfully...");
+            }
+            if (userAcc.getPassword() != null) {
+                String QUERY = "UPDATE userProfile SET userpassword = '" + userAcc.getPassword() + "' WHERE id = " + registration.userData.getId() + ";";
+                stmt.executeUpdate(QUERY);
+                System.out.println("password updated successfully...");
+            }
+            if (userAcc.getAddress() != null) {
+                final String QUERY = "UPDATE userProfile SET address = '" + userAcc.getAddress() + "' WHERE id = " + registration.userData.getId() + ";";
+                stmt.executeUpdate(QUERY);
+                System.out.println("address updated successfully...");
+            }
+
+            if (userAcc.getCity() != null) {
+                String QUERY = "UPDATE userProfile SET city = '" + userAcc.getCity() + "' WHERE id = '" + registration.userData.getId() + "';";
+                System.out.println(QUERY);
+                stmt.executeUpdate(QUERY);
+                System.out.println("city updated successfully...");
+            }
+            if (userAcc.getRegion() != null) {
+                String QUERY = "UPDATE userProfile SET region = '" + userAcc.getRegion() + "' WHERE id = '" + registration.userData.getId() + "';";
+                System.out.println(QUERY);
+                stmt.executeUpdate(QUERY);
+                System.out.println("region updated successfully...");
+            }
+            if (userAcc.getAge() != 0) {
+                final String QUERY = "UPDATE userProfile SET age = " + userAcc.getAge() + " WHERE id = " + registration.userData.getId() + ";";
+                stmt.executeUpdate(QUERY);
+                System.out.println("age updated successfully...");
+            }
+            if (userAcc.getWeight() != 0) {
+                final String QUERY = "UPDATE userProfile SET weight = " + userAcc.getWeight() + " WHERE id = " + registration.userData.getId() + ";";
+                stmt.executeUpdate(QUERY);
+                System.out.println("weight updated successfully...");
+            }
+            if (userAcc.getBloodtype() != null) {
+                final String QUERY = "UPDATE userProfile SET bloodtype = '" + userAcc.getBloodtype() + "' WHERE id = " + registration.userData.getId() + ";";
+                stmt.executeUpdate(QUERY);
+                System.out.println("blood type updated successfully...");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+
+    public static authority authAcc = new authority();
     public String editAuthProfile(authority authAcc) {
 //            System.out.println(QUERY);
         String response = "valid";
