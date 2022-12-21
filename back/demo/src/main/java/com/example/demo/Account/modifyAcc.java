@@ -3,15 +3,13 @@ import com.example.demo.Registration.*;
 import com.example.demo.DataBase.*;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.*;
-
 @RestController
 @CrossOrigin
 @RequestMapping("/savior")
 
 public class modifyAcc {
 
-    public static authority authAcc = new authority();
+    public static Authority authAcc = new Authority();
     @GetMapping("/editAccA")
     public String editeProfileAuthority(@RequestParam String email, @RequestParam String phone, @RequestParam String pass, @RequestParam String name,
                                         @RequestParam String adrs, @RequestParam String region, @RequestParam String start,
@@ -21,24 +19,29 @@ public class modifyAcc {
                                         @RequestParam int EABplus, @RequestParam int NABplus, @RequestParam int EABminus, @RequestParam int NABminus,
                                         @RequestParam int EOplus, @RequestParam int NOplus, @RequestParam int EOminus, @RequestParam int NOminus){
 //        authority authAcc = new authority();
-        registration.authData.setEmail(email);
-        registration.authData.setPhone(phone);
-        registration.authData.setPassword(pass);registration.authData.setName(name);
-        registration.authData.setAddress(adrs);registration.authData.setRegion(region);
-        registration.authData.setStartWork(start);registration.authData.setEndWork(end);
-        registration.authData.setDonationtimeFrom(donationF);
-        registration.authData.setDonationtimeTo(donationT);registration.authData.setE_Aplus(EAplus);
-        registration.authData.setN_Aplus(NAplus); registration.authData.setE_Aminus(EAminus);
-        registration.authData.setN_Aminus(NAminus);
-        registration.authData.setE_Bplus(EBplus);registration.authData.setN_Bplus(NBplus);
-        registration.authData.setE_Bminus(EBminus); registration.authData.setN_Bminus(NBminus);
-        registration.authData.setE_ABplus(EABplus); registration.authData.setN_ABplus(NABplus);
-        registration.authData.setE_ABminus(EABminus); registration.authData.setN_ABminus(NABminus);
-        registration.authData.setE_Oplus(EOplus); registration.authData.setN_Oplus(NOplus);
-        registration.authData.setE_Ominus(EOminus); registration.authData.setN_Ominus(NOminus);
+        Registration.authData.setEmail(email);
+        Registration.authData.setPhone(phone);
+        Registration.authData.setPassword(pass);
+        Registration.authData.setName(name);
+        Registration.authData.setAddress(adrs);
+        Registration.authData.setRegion(region);
+        Registration.authData.setStartWork(start);
+        Registration.authData.setEndWork(end);
+        Registration.authData.setDonationtimeFrom(donationF);
+        Registration.authData.setDonationtimeTo(donationT);
+        Registration.authData.setE_Aplus(EAplus);
+        Registration.authData.setN_Aplus(NAplus); Registration.authData.setE_Aminus(EAminus);
+        Registration.authData.setN_Aminus(NAminus);
+        Registration.authData.setE_Bplus(EBplus);
+        Registration.authData.setN_Bplus(NBplus);
+        Registration.authData.setE_Bminus(EBminus); Registration.authData.setN_Bminus(NBminus);
+        Registration.authData.setE_ABplus(EABplus); Registration.authData.setN_ABplus(NABplus);
+        Registration.authData.setE_ABminus(EABminus); Registration.authData.setN_ABminus(NABminus);
+        Registration.authData.setE_Oplus(EOplus); Registration.authData.setN_Oplus(NOplus);
+        Registration.authData.setE_Ominus(EOminus); Registration.authData.setN_Ominus(NOminus);
 
-        modifyDB modification = new modifyDB();
-        String response = modification.editAuthProfile(registration.authData);
+        ModifyDB modification = new ModifyDB();
+        String response = modification.editAuthProfile(Registration.authData);
         return response;
     }
    

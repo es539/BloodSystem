@@ -3,10 +3,10 @@ package com.example.demo.Registration;
 
 import com.example.demo.DataBase.DB;
 
-public class registrationController {
-    public boolean validateAuthorityInfo( String email,  String password){
+public class RegistrationController {
+    public boolean validateAuthorityInfo( String tax,  String password){
         DB start = new DB();
-        Boolean V = start.validateAuthority(email, password);
+        Boolean V = start.validateAuthority(tax, password);
         if(V) {
             return true;
         }

@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 @RequestMapping("/savior")
 
-public class registration {
-    public static authority authData = new authority();
+public class Registration {
+    public static Authority authData = new Authority();
     @GetMapping("/signUpA")
 
     public String signUp(@RequestParam String email, @RequestParam String phone, @RequestParam String pass, @RequestParam String name, @RequestParam String adrs,
@@ -37,7 +37,7 @@ public class registration {
 
     @GetMapping("/signInA")
     public String signIn(@RequestParam String tax, @RequestParam String password){
-        registrationController x = new registrationController();
+        RegistrationController x = new RegistrationController();
         boolean valid = x.validateAuthorityInfo(tax, password);
         if (valid){
             DB profile = new DB();
@@ -124,10 +124,10 @@ public class registration {
     @GetMapping("/gNOm")
     public String gNeed_Ominus(){ return String.valueOf(authData.getN_Ominus()); }
 
-    public static user userData = new user();
+    public static User userData = new User();
     @GetMapping("/signInI")
     public String signIn(@RequestParam long id, @RequestParam String password){
-        registrationController x = new registrationController();
+        RegistrationController x = new RegistrationController();
         boolean valid = x.validateUserInfo(id, password);
         if (valid){
             DB profile = new DB();
