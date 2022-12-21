@@ -371,5 +371,25 @@ public class DB{
         return false;
     }
 
+    public String getCity(String region){
+        String city = "" ;
+        String QUERY = "SELECT city FROM systemdb.regions where region = " + "\"" + region + "\"" + ";";
+//        System.out.println(QUERY);
+        try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement stmt = conn.createStatement();
+
+        ) {
+            String sql = "USE systemdb";
+            stmt.executeUpdate(sql);
+            ResultSet rs = stmt.executeQuery(QUERY);
+            while(rs.next()){
+                city = rs.getString("city");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return city;
+    }
+
 
 }

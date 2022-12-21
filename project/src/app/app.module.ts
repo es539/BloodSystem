@@ -9,6 +9,17 @@ import { signUpAComponent } from './signUp-Authority/signUpA.component'
 import { signInAComponent } from './signIn-Authority/signInA.component'
 import { signInIComponent } from './signIn-Individual/signInI.component'
 import { signUpIComponent } from './signUp-Individual/signUpI.component'
+import { profileAComponent } from './profile-Authority/profileA.component'
+import { profileIComponent } from './profile-Individual/profileI.component'
+import { EditAComponent } from './Edit-profile-Authority/EditA.component'
+import { EditIComponent } from './Edit-Profile-Individual/EditI.component'
+import { ForgotPasswordAComponent } from './forgot-pass-Authority/forgotPassA.component';
+import { ForgotPasswordIComponent } from './forgot-pass-Individual/forgotPassI.component';
+import { WelcomeAComponent } from './welcome-Authority/welcomeA.component'
+import { WelcomeIComponent } from './welcome-Individual/welcomeI.component'
+import { DonationComponent } from './donation/donation.component'
+
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
@@ -18,7 +29,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
     signUpAComponent,
     signInAComponent,
     signInIComponent,
-    signUpIComponent
+    signUpIComponent,
+    profileAComponent,
+    profileIComponent,
+    EditAComponent,
+    EditIComponent,
+    ForgotPasswordAComponent,
+    ForgotPasswordIComponent,
+    WelcomeAComponent,
+    WelcomeIComponent,
+    DonationComponent
   ],
   imports: [
     BrowserModule,
