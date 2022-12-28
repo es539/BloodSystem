@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/acception-list.css">
+
+
+    <title>Donation list</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light shadow px-3 bg-body rounded">
+        <div class="container-fluid">
+            <a class="navbar-brand text-danger savi" href="#">Savior</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-flex justify-content-end px-2" id="navbarNavDropdown">
+                <ul class="navbar-nav ">
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Donate</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Accepte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="containerAcc p-5">
+        <div class="container">
+            <div class="scroll-container p-5 pt-0">
+                <div class="h4 pb-2 mb-4 text-danger border-bottom border-danger">
+                    Waiting List
+                </div>
+                <table class="table table-hover table-bordered border-danger rounded bg-light">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Acceptor name</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Blood Type</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Done</th>
+                            <th scope="col">Cancel</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Ahmed Ali</td>
+                            <td>463274</td>
+                            <td>A+</td>
+                            <td class="w-25">
+                                <input type="date" id="date" name="trip-start" value="2023-01-1" class="m-1">
+                            </td>
+                            <td><button class="btn btn-outline-danger m-0 me-3 p-1"> confirm </button></td>
+                            <td><button class="btn btn-outline-danger p-1"> Cancel </button></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>menna</td>
+                            <td>463274</td>
+                            <td>A+</td>
+                            <td class="w-25">
+                                <input type="date" id="date" name="trip-start" value="2023-01-1" class="m-1">
+                            </td>
+                            <td><button class="btn btn-outline-danger m-0 me-3 p-1"> confirm </button></td>
+                            <td><button class="btn btn-outline-danger p-1"> Cancel </button></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>salma</td>
+                            <td>463274</td>
+                            <td>A+</td>
+                            <td class="w-25">
+                                <input type="date" id="date" name="trip-start" value="2023-01-1" class="m-1">
+                            </td>
+                            <td><button class="btn btn-outline-danger m-0 me-3 p-1"> confirm </button></td>
+                            <td><button class="btn btn-outline-danger p-1"> Cancel </button></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <div class="h4 pb-2 mb-4 text-danger border-bottom border-danger">
+                    Done List
+                </div>
+                <table class="table table-hover table-bordered border-danger rounded bg-light">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Acceptor name</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Blood Type</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Cancel</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Ahmed Ali</td>
+                            <td>463274</td>
+                            <td>A+</td>
+                            <td >12/12/2022</td>
+                            <td><button class="btn btn-outline-danger p-1"> Cancel </button></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>menna</td>
+                            <td>463274</td>
+                            <td>A+</td>
+                            <td >12/12/2022</td>
+                            <td><button class="btn btn-outline-danger p-1"> Cancel </button></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>salma</td>
+                            <td>463274</td>
+                            <td>A+</td>
+                            <td >12/12/2022</td>
+                            <td><button class="btn btn-outline-danger p-1"> Cancel </button></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

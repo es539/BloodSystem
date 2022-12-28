@@ -1,0 +1,38 @@
+nav{
+    font-size: larger;
+}
+.savi{
+    font-size: xx-large;
+    font-weight: 600;
+}
+.containerDon{
+    height: 89.5vh;
+    background-image: url(../imgs/world-blood-donor-day-creative-collage.jpg);
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.dot{
+    border-right: dotted;
+}
+
+.h-5{
+    height: 5px;
+}
+.h-10{
+    height: 10px;
+}
+.h-15{
+    height: 15px;
+}
+
+.w-90{
+    width: 95%;
+}
+.bold{
+    font-weight: 800;
+}
