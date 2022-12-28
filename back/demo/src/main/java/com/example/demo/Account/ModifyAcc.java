@@ -33,11 +33,8 @@ public class ModifyAcc {
     public String editeProfileAuthority(@RequestParam String email, @RequestParam String phone, @RequestParam String pass, @RequestParam String name,
                                       @RequestParam String adrs, @RequestParam String region, @RequestParam String start,
                                       @RequestParam String end, @RequestParam String donationF, @RequestParam String donationT,
-                                      @RequestParam int EAplus, @RequestParam int NAplus, @RequestParam int EAminus, @RequestParam int NAminus,
-                                      @RequestParam int EBplus, @RequestParam int NBplus, @RequestParam int EBminus, @RequestParam int NBminus,
-                                      @RequestParam int EABplus, @RequestParam int NABplus, @RequestParam int EABminus, @RequestParam int NABminus,
-                                      @RequestParam int EOplus, @RequestParam int NOplus, @RequestParam int EOminus, @RequestParam int NOminus){
-//        authority authAcc = new authority();
+                                      @RequestParam int EAplus, @RequestParam int EAminus, @RequestParam int EBplus, @RequestParam int EBminus,
+                                      @RequestParam int EABplus, @RequestParam int EABminus, @RequestParam int EOplus, @RequestParam int EOminus){
         Registration.authData.setEmail(email);
         Registration.authData.setPhone(phone);
         Registration.authData.setPassword(pass);
@@ -49,15 +46,13 @@ public class ModifyAcc {
         Registration.authData.setDonationtimeFrom(donationF);
         Registration.authData.setDonationtimeTo(donationT);
         Registration.authData.setE_Aplus(EAplus);
-        Registration.authData.setN_Aplus(NAplus); Registration.authData.setE_Aminus(EAminus);
-        Registration.authData.setN_Aminus(NAminus);
+        Registration.authData.setE_Aminus(EAminus);
         Registration.authData.setE_Bplus(EBplus);
-        Registration.authData.setN_Bplus(NBplus);
-        Registration.authData.setE_Bminus(EBminus); Registration.authData.setN_Bminus(NBminus);
-        Registration.authData.setE_ABplus(EABplus); Registration.authData.setN_ABplus(NABplus);
-        Registration.authData.setE_ABminus(EABminus); Registration.authData.setN_ABminus(NABminus);
-        Registration.authData.setE_Oplus(EOplus); Registration.authData.setN_Oplus(NOplus);
-        Registration.authData.setE_Ominus(EOminus); Registration.authData.setN_Ominus(NOminus);
+        Registration.authData.setE_Bminus(EBminus);
+        Registration.authData.setE_ABplus(EABplus);
+        Registration.authData.setE_ABminus(EABminus);
+        Registration.authData.setE_Oplus(EOplus);
+        Registration.authData.setE_Ominus(EOminus);
 
         ModifyDB modification = new ModifyDB();
         String response = modification.editAuthProfile(Registration.authData);

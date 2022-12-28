@@ -12,7 +12,7 @@ import java.sql.*;
 public class ModifyDB {
     static final String DB_URL = "jdbc:mysql://localhost:3306";
     static final String USER = "root";
-    static final String PASS = "aboshady2001@Esraa";
+    static final String PASS = "2972001333";
 
 
 
@@ -212,13 +212,6 @@ public class ModifyDB {
                 stmt.executeUpdate(QUERY);
                 System.out.println("A+ exist updated successfully...");
             }
-            if(authAcc.getN_Aplus() >= 0)
-            {
-                String QUERY = "UPDATE bagsNumber SET Aplus_needed = " + authAcc.getN_Aplus() + " WHERE tax = '" + Registration.authData.getTax() + "';";
-                System.out.println(QUERY);
-                stmt.executeUpdate(QUERY);
-                System.out.println("A+ neeeded updated successfully...");
-            }
 
             if(authAcc.getE_Aminus() >= 0)
             {
@@ -226,13 +219,6 @@ public class ModifyDB {
                 System.out.println(QUERY);
                 stmt.executeUpdate(QUERY);
                 System.out.println("A- exist updated successfully...");
-            }
-            if(authAcc.getN_Aminus() >= 0)
-            {
-                String QUERY = "UPDATE bagsNumber SET Aminus_needed = " + authAcc.getN_Aminus() + " WHERE tax = '" + Registration.authData.getTax() + "';";
-                System.out.println(QUERY);
-                stmt.executeUpdate(QUERY);
-                System.out.println("A- neeeded updated successfully...");
             }
 
             if(authAcc.getE_Bplus() >= 0)
@@ -242,27 +228,13 @@ public class ModifyDB {
                 stmt.executeUpdate(QUERY);
                 System.out.println("B+ exist updated successfully...");
             }
-            if(authAcc.getN_Bplus() >= 0)
-            {
-                String QUERY = "UPDATE bagsNumber SET Bplus_needed = " + authAcc.getN_Bplus() + " WHERE tax = '" + Registration.authData.getTax() + "';";
-                System.out.println(QUERY);
-                stmt.executeUpdate(QUERY);
-                System.out.println("B+ needed updated successfully...");
-            }
-//
+
             if(authAcc.getE_Bminus() >= 0)
             {
                 String QUERY = "UPDATE bagsNumber SET Bminus_needed = " + authAcc.getE_Bminus() + " WHERE tax = '" + Registration.authData.getTax() + "';";
                 System.out.println(QUERY);
                 stmt.executeUpdate(QUERY);
                 System.out.println("B- exist updated successfully...");
-            }
-            if(authAcc.getN_Bminus() >= 0)
-            {
-                String QUERY = "UPDATE bagsNumber SET Bminus_needed = " + authAcc.getN_Bminus() + " WHERE tax = '" + Registration.authData.getTax() + "';";
-                System.out.println(QUERY);
-                stmt.executeUpdate(QUERY);
-                System.out.println("B- needed updated successfully...");
             }
 
             if(authAcc.getE_ABplus() >= 0)
@@ -272,14 +244,6 @@ public class ModifyDB {
                 stmt.executeUpdate(QUERY);
                 System.out.println("AB+ exist updated successfully...");
             }
-            if(authAcc.getN_ABplus() >= 0)
-            {
-                String QUERY = "UPDATE bagsNumber SET ABplus_needed = " + authAcc.getN_ABplus() + " WHERE tax = '" + Registration.authData.getTax() + "';";
-                System.out.println(QUERY);
-                stmt.executeUpdate(QUERY);
-                System.out.println("AB+ needed updated successfully...");
-            }
-
 
             if(authAcc.getE_ABminus() >= 0)
             {
@@ -288,14 +252,6 @@ public class ModifyDB {
                 stmt.executeUpdate(QUERY);
                 System.out.println("AB- exist updated successfully...");
             }
-            if(authAcc.getN_ABminus() >= 0)
-            {
-                String QUERY = "UPDATE bagsNumber SET ABminus_needed = " + authAcc.getN_ABminus() + " WHERE tax = '" + Registration.authData.getTax() + "';";
-                System.out.println(QUERY);
-                stmt.executeUpdate(QUERY);
-                System.out.println("AB- needed updated successfully...");
-            }
-
 
             if(authAcc.getE_Oplus() >= 0)
             {
@@ -304,26 +260,13 @@ public class ModifyDB {
                 stmt.executeUpdate(QUERY);
                 System.out.println("O+ exist updated successfully...");
             }
-            if(authAcc.getN_Oplus() >= 0)
-            {
-                String QUERY = "UPDATE bagsNumber SET Oplus_needed = " + authAcc.getN_Oplus() + " WHERE tax = '" + Registration.authData.getTax() + "';";
-                System.out.println(QUERY);
-                stmt.executeUpdate(QUERY);
-                System.out.println("O+ needed updated successfully...");
-            }
+
             if(authAcc.getE_Ominus() >= 0)
             {
                 String QUERY = "UPDATE bagsNumber SET Ominus_exist = " + authAcc.getE_Ominus() + " WHERE tax = '" + Registration.authData.getTax() + "';";
                 System.out.println(QUERY);
                 stmt.executeUpdate(QUERY);
                 System.out.println("O- exist updated successfully...");
-            }
-            if(authAcc.getN_Ominus() >= 0)
-            {
-                String QUERY = "UPDATE bagsNumber SET Ominus_needed = " + authAcc.getN_Ominus() + " WHERE tax = '" + Registration.authData.getTax() + "';";
-                System.out.println(QUERY);
-                stmt.executeUpdate(QUERY);
-                System.out.println("O- needed updated successfully...");
             }
 
         } catch (SQLException e) {
