@@ -1,41 +1,20 @@
 package com.example.demo.DataBase;
 
-
-import com.example.demo.Registration.Authority;
-import com.example.demo.Registration.Registration;
-import com.example.demo.Registration.User;
+import com.example.demo.Registration.*;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 @RestController
 @CrossOrigin
 @RequestMapping("/savior")
+
 public class ModifyDB {
     static final String DB_URL = "jdbc:mysql://localhost:3306";
     static final String USER = "root";
-    static final String PASS = "2972001333";
+    static final String PASS = "aboshady2001@Esraa";
 
-    public static User userAcc = new User();
-    @GetMapping("/editAccI")
-    public String editeProfile(@RequestParam String pass, @RequestParam String name,
-                               @RequestParam int age, @RequestParam int weight, @RequestParam String BT,
-                               @RequestParam String adrs, @RequestParam String region){
 
-        Registration.userData.setPassword(pass);
-        Registration.userData.setName(name);
-        Registration.userData.setAge(age);
-        Registration.userData.setWeight(weight);
-        Registration.userData.setBloodtype(BT);
-        Registration.userData.setAddress(adrs);
-
-        ModifyDB modification = new ModifyDB();
-        String response = modification.editUserProfile(Registration.userData);
-        return response;
-    }
 
     @GetMapping("/modifyPassI")
     public String modifyUserPass(@RequestParam long id , @RequestParam String pass){
@@ -88,6 +67,7 @@ public class ModifyDB {
         }
         return response;
     }
+
 
     public String editUserProfile(User userAcc) {
         String response = "valid";
@@ -146,7 +126,7 @@ public class ModifyDB {
         return response;
     }
 
-    public static Authority authAcc = new Authority();
+
     public String editAuthProfile(Authority authAcc) {
 //            System.out.println(QUERY);
         String response = "valid";
