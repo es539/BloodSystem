@@ -95,6 +95,8 @@ export class EditIComponent implements OnInit {
   }
 
   hashPassword(pass: string){
+    this.hashedPass = ''
+    this.asci = ''
     this.n = pass.length
     for(let i = 0; i < this.n; i++){
         this.asci += pass.charCodeAt(i)

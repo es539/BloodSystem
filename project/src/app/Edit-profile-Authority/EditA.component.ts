@@ -30,21 +30,13 @@ export class EditAComponent implements OnInit {
 
   // blood types needed and exist
   ExistAplus: any = ''
-  NeededAplus: any = ''
   ExistAminus: any = ''
-  NeededAminus: any = ''
   ExistBplus: any = ''
-  NeededBplus: any = ''
   ExistBminus: any = ''
-  NeededBminus: any = ''
   ExistABplus: any = ''
-  NeededABplus: any = ''
   ExistABminus: any = ''
-  NeededABminus: any = ''
   ExistOplus: any = ''
-  NeededOplus: any = ''
   ExistOminus: any = ''
-  NeededOminus: any = ''
 
   info: any
 
@@ -147,41 +139,6 @@ export class EditAComponent implements OnInit {
       console.log(this.ExistOminus)
     }
 
-
-    neededBagsAuth(){
-      const NAplus = (<HTMLInputElement>document.getElementById('APNBags'))
-      this.NeededAplus = NAplus.value
-      console.log(this.NeededAplus)
-  
-      const NAminus = (<HTMLInputElement>document.getElementById('ANNBags'))
-      this.NeededAminus = NAminus.value
-      console.log(this.NeededAminus)
-
-      const NBplus = (<HTMLInputElement>document.getElementById('BPNBags'))
-      this.NeededBplus = NBplus.value
-      console.log(this.NeededBplus)
-
-      const NBminus = (<HTMLInputElement>document.getElementById('BNNBags'))
-      this.NeededBminus = NBminus.value
-      console.log(this.NeededBminus)
-  
-      const NABplus = (<HTMLInputElement>document.getElementById('ABPNBags'))
-      this.NeededABplus = NABplus.value
-      console.log(this.NeededABplus)
-
-      const NABminus = (<HTMLInputElement>document.getElementById('ABNNBags'))
-      this.NeededABminus = NABminus.value
-      console.log(this.NeededABminus)
-  
-      const NOplus = (<HTMLInputElement>document.getElementById('OPNBags'))
-      this.NeededOplus = NOplus.value
-      console.log(this.NeededOplus)
-  
-      const NOminus = (<HTMLInputElement>document.getElementById('ONNBags'))
-      this.NeededOminus = NOminus.value
-      console.log(this.NeededOminus)
-    }
-
     addExistBags(): Map<string, string>{
       var EBags = new Map<string, string>();
       EBags.set("A+", this.ExistAplus)
@@ -195,38 +152,29 @@ export class EditAComponent implements OnInit {
   
       return EBags
     }
-  
-    addNeededBags(): Map<string, string>{
-      var NBags = new Map<string, string>();
-      NBags.set("A+", this.NeededAplus)
-      NBags.set("A-", this.NeededAminus)
-      NBags.set("B+", this.NeededBplus)
-      NBags.set("B-", this.NeededBminus)
-      NBags.set("AB+", this.NeededABplus)
-      NBags.set("AB-", this.NeededABminus)
-      NBags.set("O+", this.NeededOplus)
-      NBags.set("O-", this.NeededOminus)
-  
-      return NBags
-    }
 
-    validation()
-    {
+    validation(){
+      let i = this.Email.length
       if(this.Name==''||this.Address==''||this.Region==''||this.Email==''||this.Pass==''
-    || this.WFrom=='' || this.WTo=='' || this.DAFrom=='' || this.DATo=='' || this.Phone==''
-    || this.ExistAplus=='' || this.NeededAplus=='' || this.ExistAminus=='' || this.NeededAminus==''
-    || this.ExistABplus=='' || this.NeededABplus=='' || this.ExistABminus=='' || this.NeededABminus==''
-    || this.ExistBplus=='' || this.NeededBplus=='' || this.ExistOplus=='' || this.NeededOplus=='')
-    {
-      alert("u don't enter complete information")
-      return false
-    }
-    else if(this.Pass.length<8)
-    {
-      alert("u enter invalid password")
-      return false
-    }
-    return true
+      || this.WFrom=='' || this.WTo=='' || this.DAFrom=='' || this.DATo=='' || this.Phone==''
+      || this.ExistAplus=='' || this.ExistAminus=='' || this.ExistABplus=='' || this.ExistABminus=='' 
+      || this.ExistBplus=='' || this.ExistBminus=='' || this.ExistOplus=='' || this.ExistOminus==''){
+        alert('Incomplete information')
+        return false
+      }
+      else if(this.Pass.length<8){
+        alert('INVALID PASSWORD, its length is < 8');
+        return false
+      }
+      else if(this.Email[i-1]!='m' || this.Email[i-2]!='o' || this.Email[i-3]!='c' || this.Email[i-4]!='.' || this.Email[i-5]!='l' || this.Email[i-6]!='i' || this.Email[i-7]!='a' || this.Email[i-8]!='m' || this.Email[i-9]!='g' || this.Email[i-10]!='@'){
+        alert('INVALID GMAIL');
+        return false
+      }
+      else if(this.Phone.length!=11){
+        alert('INVALID Phone number')
+        return false
+      }
+      return true
     }
 
     showPassword(){
@@ -238,8 +186,9 @@ export class EditAComponent implements OnInit {
       }
     }
   
-
     hashPassword(pass: string){
+      this.hashedPass = ''
+      this.asci = ''
       this.n = pass.length
       for(let i = 0; i < this.n; i++){
           this.asci += pass.charCodeAt(i)
@@ -250,10 +199,8 @@ export class EditAComponent implements OnInit {
 
      modifyAccAuth(Email: string, Phone: string, Password: string, Name: string, Address: string, Region: string,
       Start: string, End: string, DAFrom: string, DATo: string, 
-      EAp: any, NAp: any, EAm: any, NAm: any, 
-      EBp: any, NBp: any, EBm: any, NBm: any, 
-      EABp: any, NABp: any, EABm: any, NABm: any, 
-      EOp: any, NOp: any, EOm: any, NOm: any){
+      EAp: any, EAm: any, EBp: any, EBm: any,
+      EABp: any, EABm: any, EOp: any, EOm: any){
       console.log("modifyAccCalling")
       this.http.get('http://localhost:6060/savior/editAccA',{ 
         responseType:'text',
@@ -269,21 +216,13 @@ export class EditAComponent implements OnInit {
           donationF: DAFrom,
           donationT: DATo,
           EAplus: EAp,
-          NAplus: NAp,
           EAminus: EAm,
-          NAminus: NAm,
           EBplus: EBp,
-          NBplus: NBp,
           EBminus: EBm,
-          NBminus: NBm,
           EABplus: EABp,
-          NABplus: NABp,
           EABminus: EABm,
-          NABminus: NABm,
           EOplus: EOp,
-          NOplus: NOp,
           EOminus: EOm,
-          NOminus: NOm
         },
         observe:'response'
       }).subscribe(response=>{
@@ -316,28 +255,7 @@ export class EditAComponent implements OnInit {
     this.startDonAuth()
     this.endDonAuth()
     this.existBagsAuth()
-    this.neededBagsAuth()
   }
-
-  // NEXT(){
-  //   this.INFO()
-  //   this.modifyAccAuth(this.Email, this.Phone, this.Pass, this.Name, this.Address, this.Region,  this.WFrom, this.WTo, this.DAFrom, this.DATo
-  //       ,this.ExistAplus, this.NeededAplus, this.ExistAminus, this.NeededAminus
-  //       ,this.ExistBplus, this.NeededBplus, this.ExistBminus, this.NeededBminus
-  //       ,this.ExistABplus, this.NeededABplus, this.ExistABminus, this.NeededABminus
-  //       ,this.ExistOplus, this.NeededOplus, this.ExistOminus, this.NeededOminus)
-  //       this.hashedPass = ''
-
-  //       if(this.validation()){
-  //         console.log('valid');
-  //         this.Pass = this.hashPassword(this.Pass)
-  //         console.log("password after hashing: " + this.Pass)
-  //   }
-  //   else{
-  //     console.log("not valid")
-  //     alert("INVALID!")
-  //   }
-  // }
 
   NEXT(){
     this.INFO()
@@ -346,10 +264,8 @@ export class EditAComponent implements OnInit {
       this.Pass = this.hashPassword(this.Pass)
       console.log("password after hashing: " + this.Pass)
       this.modifyAccAuth(this.Email, this.Phone, this.Pass, this.Name, this.Address, this.Region, this.WFrom, this.WTo, this.DAFrom, this.DATo
-        ,this.ExistAplus, this.NeededAplus, this.ExistAminus, this.NeededAminus
-        ,this.ExistBplus, this.NeededBplus, this.ExistBminus, this.NeededBminus
-        ,this.ExistABplus, this.NeededABplus, this.ExistABminus, this.NeededABminus
-        ,this.ExistOplus, this.NeededOplus, this.ExistOminus, this.NeededOminus)
+        ,this.ExistAplus, this.ExistAminus, this.ExistBplus, this.ExistBminus
+        ,this.ExistABplus, this.ExistABminus, this.ExistOplus, this.ExistOminus)
         this.hashedPass = ''
     }
     else{
@@ -357,7 +273,4 @@ export class EditAComponent implements OnInit {
       alert("INVALID!")
     }
   }
-
-
-
-    }
+}
