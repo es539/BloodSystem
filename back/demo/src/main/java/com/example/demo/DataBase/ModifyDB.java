@@ -12,7 +12,7 @@ import java.sql.*;
 public class ModifyDB {
     static final String DB_URL = "jdbc:mysql://localhost:3306";
     static final String USER = "root";
-    static final String PASS = "2972001333";
+    static final String PASS = "aboshady2001@Esraa";
 
 
 
