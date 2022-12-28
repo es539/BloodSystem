@@ -3,9 +3,9 @@ import com.example.demo.Registration.*;
 import java.sql.*;
 
 public class DB{
-    static final String DB_URL = "jdbc:mysql://localhost:3306";
-    static final String USER = "root";
-    static final String PASS = "aboshady2001@Esraa";
+    static final String DB_URL = "jdbc:postgresql://db.vxmcbqcizclgrmucashg.supabase.co:5432/postgres";
+    static final String USER = "postgres";
+    static final String PASS = "Salma/saeed/1911/z";
 
     public String addUser(User newuser){
         boolean valid = validateID(newuser.getId());
