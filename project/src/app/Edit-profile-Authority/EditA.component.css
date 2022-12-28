@@ -1,5 +1,5 @@
 .contentprofile{
-    height: 250vh;
+    height: 90vh;
     background-image: url(../imgs/profile.jpg);
     background-position: center center;
     background-size: cover;
@@ -15,3 +15,8 @@ nav{
     padding: 50px;
 
 }
+.scroll-container{
+    height: 90vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
