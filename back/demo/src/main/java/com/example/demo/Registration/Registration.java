@@ -8,9 +8,88 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/savior")
 
 public class Registration {
-    public static Authority authData = new Authority();
-    @GetMapping("/signUpA")
 
+//    enum Response {
+//        DONE, ERROR, NOT_FOUND
+//    }
+
+    public static User userData = new User();
+    @GetMapping("/signInI")
+    public String signIn(@RequestParam long id, @RequestParam String password){
+        RegistrationController x = new RegistrationController();
+        boolean valid = x.validateUserInfo(id, password);
+        if (valid){
+            DB profile = new DB();
+            userData = profile.getUserData(id, password);
+            return "True";
+        }
+        return "False";
+    }
+
+    @GetMapping("/signUpI")
+    public String signUp(@RequestParam long id,@RequestParam String pass, @RequestParam String name,
+                         @RequestParam int age, @RequestParam int weight,@RequestParam String BT,
+                         @RequestParam String adrs, @RequestParam String region){
+        DB adding = new DB();
+        userData.setId(id);
+        userData.setPassword(pass);
+        userData.setName(name);
+        userData.setAge(age);
+        userData.setWeight(weight);
+        userData.setBloodtype(BT);
+        userData.setAddress(adrs);
+        userData.setRegion(region);
+
+        String response;
+        if(adding.checkForNoduplicateUsers(id)==false){
+            response = adding.addUser(userData);
+        }else{
+            response = "invalid";
+        }
+        return response;
+    }
+
+    @GetMapping("/gUn")
+    public String gUserName(){
+        return userData.getName();
+    }
+    @GetMapping("/gUi")
+    public String gUserId(){ return  String.valueOf(userData.getId()); }
+    @GetMapping("/gUa")
+    public String gUserAddress(){
+        return userData.getAddress();
+    }
+    @GetMapping("/gUr")
+    public String gUserRegion(){ return userData.getRegion(); }
+
+    @GetMapping("/gUc")
+    public String gUserCity(){
+        DB db = new DB();
+        return db.getCity(userData.getRegion()); }
+
+    @GetMapping("/gUw")
+    public String gUserWeight(){ return String.valueOf(userData.getWeight()); }
+    @GetMapping("/gUg")
+    public String gUserAge(){ return String.valueOf(userData.getAge()); }
+    @GetMapping("/gUt")
+    public String gUserType(){
+        return userData.getBloodtype();
+    }
+
+    public static Authority authData = new Authority();
+    @GetMapping("/signInA")
+    public String signIn(@RequestParam String tax, @RequestParam String password){
+        RegistrationController x = new RegistrationController();
+        boolean valid = x.validateAuthorityInfo(tax, password);
+        if (valid){
+            DB profile = new DB();
+            authData = profile.getAuthData(tax, password);
+            return "True";
+        }
+        return "False";
+    }
+
+    @GetMapping("/signUpA")
     public String signUp(@RequestParam String email, @RequestParam String phone, @RequestParam String pass, @RequestParam String name, @RequestParam String adrs,
                          @RequestParam String region, @RequestParam String tax, @RequestParam String start, @RequestParam String end,
                          @RequestParam String donationF, @RequestParam String donationT,
@@ -33,18 +112,6 @@ public class Registration {
             response = "invalid";
         }
         return response;
-    }
-
-    @GetMapping("/signInA")
-    public String signIn(@RequestParam String tax, @RequestParam String password){
-        RegistrationController x = new RegistrationController();
-        boolean valid = x.validateAuthorityInfo(tax, password);
-        if (valid){
-            DB profile = new DB();
-            authData = profile.getAuthData(tax, password);
-            return "True";
-        }
-        return "False";
     }
 
     @GetMapping("/gAe")
@@ -123,69 +190,4 @@ public class Registration {
     public String gExist_Ominus(){ return String.valueOf(authData.getE_Ominus()); }
     @GetMapping("/gNOm")
     public String gNeed_Ominus(){ return String.valueOf(authData.getN_Ominus()); }
-
-    public static User userData = new User();
-    @GetMapping("/signInI")
-    public String signIn(@RequestParam long id, @RequestParam String password){
-        RegistrationController x = new RegistrationController();
-        boolean valid = x.validateUserInfo(id, password);
-        if (valid){
-            DB profile = new DB();
-            userData = profile.getUserData(id, password);
-            return "True";
-        }
-        return "False";
-    }
-
-    @GetMapping("/signUpI")
-    public String signUp(@RequestParam long id,@RequestParam String pass, @RequestParam String name,
-                         @RequestParam int age, @RequestParam int weight,@RequestParam String BT,
-                         @RequestParam String adrs, @RequestParam String region){
-        DB adding = new DB();
-        userData.setId(id);
-        userData.setPassword(pass);
-        userData.setName(name);
-        userData.setAge(age);
-        userData.setWeight(weight);
-        userData.setBloodtype(BT);
-        userData.setAddress(adrs);
-        userData.setRegion(region);
-
-        String response;
-        if(adding.checkForNoduplicateUsers(id)==false){
-            response = adding.addUser(userData);
-        }else{
-            response = "invalid";
-        }
-        return response;
-    }
-
-    @GetMapping("/gUn")
-    public String gUserName(){
-        return userData.getName();
-    }
-    @GetMapping("/gUi")
-    public String gUserId(){ return  String.valueOf(userData.getId()); }
-    @GetMapping("/gUa")
-    public String gUserAddress(){
-        return userData.getAddress();
-    }
-    @GetMapping("/gUr")
-    public String gUserRegion(){ return userData.getRegion(); }
-
-    @GetMapping("/gUc")
-    public String gUserCity(){
-        DB db = new DB();
-        return db.getCity(userData.getRegion()); }
-
-    @GetMapping("/gUw")
-    public String gUserWeight(){ return String.valueOf(userData.getWeight()); }
-    @GetMapping("/gUg")
-    public String gUserAge(){ return String.valueOf(userData.getAge()); }
-    @GetMapping("/gUt")
-    public String gUserType(){
-        return userData.getBloodtype();
-    }
-
-
 }
