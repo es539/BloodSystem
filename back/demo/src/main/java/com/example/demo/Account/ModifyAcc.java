@@ -6,15 +6,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin
 @RequestMapping("/savior")
-
 public class ModifyAcc {
-
     public static User userAcc = new User();
 
     @GetMapping("/editAccI")
     public String editeProfile(@RequestParam String pass, @RequestParam String name,
-                               @RequestParam int age, @RequestParam int weight,@RequestParam String BT,
-                               @RequestParam String adrs, @RequestParam String region){
+                             @RequestParam int age, @RequestParam int weight,@RequestParam String BT,
+                             @RequestParam String adrs, @RequestParam String region){
 
         Registration.userData.setPassword(pass);
         Registration.userData.setName(name);
@@ -28,15 +26,17 @@ public class ModifyAcc {
         return response;
     }
 
+    //the user cannot modify tax number
+    //done
     public static Authority authAcc = new Authority();
     @GetMapping("/editAccA")
     public String editeProfileAuthority(@RequestParam String email, @RequestParam String phone, @RequestParam String pass, @RequestParam String name,
-                                        @RequestParam String adrs, @RequestParam String region, @RequestParam String start,
-                                        @RequestParam String end, @RequestParam String donationF, @RequestParam String donationT,
-                                        @RequestParam int EAplus, @RequestParam int NAplus, @RequestParam int EAminus, @RequestParam int NAminus,
-                                        @RequestParam int EBplus, @RequestParam int NBplus, @RequestParam int EBminus, @RequestParam int NBminus,
-                                        @RequestParam int EABplus, @RequestParam int NABplus, @RequestParam int EABminus, @RequestParam int NABminus,
-                                        @RequestParam int EOplus, @RequestParam int NOplus, @RequestParam int EOminus, @RequestParam int NOminus){
+                                      @RequestParam String adrs, @RequestParam String region, @RequestParam String start,
+                                      @RequestParam String end, @RequestParam String donationF, @RequestParam String donationT,
+                                      @RequestParam int EAplus, @RequestParam int NAplus, @RequestParam int EAminus, @RequestParam int NAminus,
+                                      @RequestParam int EBplus, @RequestParam int NBplus, @RequestParam int EBminus, @RequestParam int NBminus,
+                                      @RequestParam int EABplus, @RequestParam int NABplus, @RequestParam int EABminus, @RequestParam int NABminus,
+                                      @RequestParam int EOplus, @RequestParam int NOplus, @RequestParam int EOminus, @RequestParam int NOminus){
 //        authority authAcc = new authority();
         Registration.authData.setEmail(email);
         Registration.authData.setPhone(phone);
@@ -63,5 +63,4 @@ public class ModifyAcc {
         String response = modification.editAuthProfile(Registration.authData);
         return response;
     }
-   
 }
