@@ -103,7 +103,7 @@ public class Acception {
                 String name = rs.getString("authName");
                 String address= rs.getString("address");
                 String phone = rs.getString("phone");
-                res=res+name+","+address+","+phone+",";
+                res=res+name+","+address+","+region+","+phone+",";
             }
             if(res.length()!=0){
                 res=res.substring(0,res.length()-1);}
@@ -156,7 +156,7 @@ public class Acception {
                 String name = rs.getString("authName");
                 String address= rs.getString("address");
                 String phone = rs.getString("phone");
-                res=res+name+","+address+","+phone+",";
+                res=res+name+","+address+","+region+","+city+","+phone+",";
             }
             if(res.length()!=0){
                 res=res.substring(0,res.length()-1);}
