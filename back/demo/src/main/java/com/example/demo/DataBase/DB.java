@@ -3,9 +3,9 @@ import com.example.demo.Registration.*;
 import java.sql.*;
 
 public class DB{
-    static final String DB_URL = "jdbc:mysql://localhost:3306";
-    static final String USER = "root";
-    static final String PASS = "aboshady2001@Esraa";
+    static final String DB_URL = "jdbc:postgresql://db.vxmcbqcizclgrmucashg.supabase.co:5432/postgres";
+    static final String USER = "postgres";
+    static final String PASS = "Salma/saeed/1911/z";
 
     public String addUser(User newuser){
         boolean valid = validateID(newuser.getId());
@@ -102,15 +102,10 @@ public class DB{
                     +"\",\""+newAuth.getDonationtimeFrom() +"\",\""+newAuth.getDonationtimeTo()+"\");\n";
             System.out.println(QUERY);
         final String QUERY2 = "insert into bagsNumber values(\""+newAuth.getTax()
-                +"\",\""+newAuth.getN_Aplus()
-                +"\",\""+newAuth.getE_Aplus()+"\",\""+newAuth.getN_Aminus()
-                +"\",\""+newAuth.getE_Aminus()+"\",\""+newAuth.getN_Bplus()
-                +"\",\""+newAuth.getE_Bplus()+"\",\""+newAuth.getN_Bminus()
-                +"\",\""+newAuth.getE_Bminus()+"\",\""+newAuth.getN_ABplus()
-                +"\",\""+newAuth.getE_ABplus()+"\",\""+newAuth.getN_ABminus()
-                +"\",\""+newAuth.getE_ABminus()+"\",\""+newAuth.getN_Oplus()
-                +"\",\""+newAuth.getE_Oplus()+"\",\""+newAuth.getN_Ominus()
-                +"\",\""+newAuth.getE_Ominus()+"\");\n";
+                +"\",\""+newAuth.getE_Aplus()+"\",\""+newAuth.getE_Aminus()
+                +"\",\""+newAuth.getE_Bplus()+"\",\""+newAuth.getE_Bminus()
+                +"\",\""+newAuth.getE_ABplus()+"\",\""+newAuth.getE_ABminus()
+                +"\",\""+newAuth.getE_Oplus()+"\",\""+newAuth.getE_Ominus()+"\");\n";
             try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
                 Statement stmt = conn.createStatement();
             ) {
@@ -379,14 +374,14 @@ public class DB{
 
                 }
                 while(rs1.next()){
-                    Registration.authData.setE_Aplus(rs1.getInt("Aplus_exist")); Registration.authData.setN_Aplus(rs1.getInt("Aplus_needed"));
-                    Registration.authData.setE_Aminus(rs1.getInt("Aminus_exist")); Registration.authData.setN_Aminus(rs1.getInt("Aminus_needed"));
-                    Registration.authData.setE_Bplus(rs1.getInt("Bplus_exist")); Registration.authData.setN_Bplus(rs1.getInt("Bplus_needed"));
-                    Registration.authData.setE_Bminus(rs1.getInt("Bminus_exist")); Registration.authData.setN_Bminus(rs1.getInt("Bminus_needed"));
-                    Registration.authData.setE_ABplus(rs1.getInt("ABplus_exist")); Registration.authData.setN_ABplus(rs1.getInt("ABplus_needed"));
-                    Registration.authData.setE_ABminus(rs1.getInt("ABminus_exist")); Registration.authData.setN_ABminus(rs1.getInt("ABminus_needed"));
-                    Registration.authData.setE_Oplus(rs1.getInt("Oplus_exist")); Registration.authData.setN_Oplus(rs1.getInt("Oplus_needed"));
-                    Registration.authData.setE_Ominus(rs1.getInt("Ominus_exist")); Registration.authData.setN_Ominus(rs1.getInt("Ominus_needed"));
+                    Registration.authData.setE_Aplus(rs1.getInt("Aplus_exist"));
+                    Registration.authData.setE_Aminus(rs1.getInt("Aminus_exist"));
+                    Registration.authData.setE_Bplus(rs1.getInt("Bplus_exist"));
+                    Registration.authData.setE_Bminus(rs1.getInt("Bminus_exist"));
+                    Registration.authData.setE_ABplus(rs1.getInt("ABplus_exist"));
+                    Registration.authData.setE_ABminus(rs1.getInt("ABminus_exist"));
+                    Registration.authData.setE_Oplus(rs1.getInt("Oplus_exist"));
+                    Registration.authData.setE_Ominus(rs1.getInt("Ominus_exist"));
                 }
                 return Registration.authData;
             } catch (SQLException e) {

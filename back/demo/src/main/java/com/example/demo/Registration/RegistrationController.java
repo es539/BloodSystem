@@ -2,21 +2,6 @@ package com.example.demo.Registration;
 import com.example.demo.DataBase.DB;
 
 public class RegistrationController {
-//    public Boolean checkID(int id){
-//
-//    return true;
-//    }
-//    public Boolean checkEmail(){
-//        return true;
-//    }
-//    public Boolean checkPassword(){
-//        return true;
-//    }
-//    public void createUserAcc(){
-//
-//    }
-//    public void createAuthrityAcc(){
-//    }
 
     public boolean validateUserInfo( long id,  String password){
         DB start = new DB();

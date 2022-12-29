@@ -10,27 +10,27 @@
       <div class="card border-danger p-5 scroll-container" style="max-width: 700px;">
         <p>Sign Up for Authority</p>
         <div class="row g-3">
-          <div class="col-md-4">
+          <div class="col-md-6">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" id="name">
           </div>
-          <div class="col-md-4">
+          <div class="col-md-6">
             <label for="tax" class="form-label">Tax registration number</label>
-            <input type="text" class="form-control" id="tax">
+            <input type="text" placeholder="Enter 9 numbers" class="form-control" id="tax">
           </div>
-          <div class="col-md-4">
+          <div class="col-md-8">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password">
+            <input type="password" placeholder="password length must be >= 8" class="form-control" id="password">
             <label class="sp">Show password</label>
             <input type="checkbox" (click)="showPassword()"><br>
           </div>
           <div class="col-md-6">
             <label for="email" class="form-label">E-mail</label>
-            <input type="email" class="form-control" id="email">
+            <input type="email" placeholder="***@gmail.com" class="form-control" id="email">
           </div>
           <div class="col-md-6">
             <label for="phone" class="form-label">Phone</label>
-            <input type="text" class="form-control" id="phone">
+            <input type="text" placeholder="Enter 11 numbers" class="form-control" id="phone">
           </div>
           <div class="col-8">
             <label for="address" class="form-label">Address</label>
@@ -148,91 +148,52 @@
             <input type="time" class="form-control" id="dTimeT">
           </div>
 
-          <label for="" class="form-label mb-0">A+</label>
+          <div>Enter number of existing bags for each blood type:</div>
+
           <div class="col-md-6">
-            <label for="APEBags" class="form-label">Existing bags:</label>
-            <input type="number" class="form-control" id="APEBags">
-          </div>
-          <div class="col-md-6">
-            <label for="APNBags" class="form-label">Neaded bags:</label>
-            <input type="number" class="form-control" id="APNBags">
+            <label for="APEBags" class="form-label">A+</label>
+            <input type="number" min="0" max="100" value="0" class="form-control" id="APEBags">
           </div>
 
-          <label for="" class="form-label mb-0">A-</label>
           <div class="col-md-6">
-            <label for="ANEBags" class="form-label">Existing bags:</label>
-            <input type="number" class="form-control" id="ANEBags">
-          </div>
-          <div class="col-md-6">
-            <label for="ANNBags" class="form-label">Neaded bags:</label>
-            <input type="number" class="form-control" id="ANNBags">
+            <label for="ANEBags" class="form-label">A-</label>
+            <input type="number" min="0" max="100" value="0" class="form-control" id="ANEBags">
           </div>
 
-          <label for="" class="form-label mb-0">B+</label>
           <div class="col-md-6">
-            <label for="BPEBags" class="form-label">Existing bags:</label>
-            <input type="number" class="form-control" id="BPEBags">
-          </div>
-          <div class="col-md-6">
-            <label for="BPNBags" class="form-label">Neaded bags:</label>
-            <input type="number" class="form-control" id="BPNBags">
+            <label for="BPEBags" class="form-label">B+</label>
+            <input type="number" min="0" max="100" value="0" class="form-control" id="BPEBags">
           </div>
 
-          <label for="" class="form-label mb-0">B-</label>
           <div class="col-md-6">
-            <label for="BNEBags" class="form-label">Existing bags:</label>
-            <input type="number" class="form-control" id="BNEBags">
-          </div>
-          <div class="col-md-6">
-            <label for="BNNBags" class="form-label">Neaded bags:</label>
-            <input type="number" class="form-control" id="BNNBags">
+            <label for="BNEBags" class="form-label">B-</label>
+            <input type="number" min="0" max="100" value="0" class="form-control" id="BNEBags">
           </div>
 
-          <label for="" class="form-label mb-0">AB+</label>
           <div class="col-md-6">
-            <label for="ABPEBags" class="form-label">Existing bags:</label>
-            <input type="number" class="form-control" id="ABPEBags">
-          </div>
-          <div class="col-md-6">
-            <label for="ABPNBags" class="form-label">Neaded bags:</label>
-            <input type="number" class="form-control" id="ABPNBags">
+            <label for="ABPEBags" class="form-label">AB+</label>
+            <input type="number" min="0" max="100" value="0" class="form-control" id="ABPEBags">
           </div>
 
-          <label for="" class="form-label mb-0">AB-</label>
           <div class="col-md-6">
-            <label for="ABNEBags" class="form-label">Existing bags:</label>
-            <input type="number" class="form-control" id="ABNEBags">
-          </div>
-          <div class="col-md-6">
-            <label for="ABNNBags" class="form-label">Neaded bags:</label>
-            <input type="number" class="form-control" id="ABNNBags">
-          </div>
-          
-          <label for="" class="form-label mb-0">O+</label>
-          <div class="col-md-6">
-            <label for="OPEBags" class="form-label">Existing bags:</label>
-            <input type="number" class="form-control" id="OPEBags">
-          </div>
-          <div class="col-md-6">
-            <label for="OPNBags" class="form-label">Neaded bags:</label>
-            <input type="number" class="form-control" id="OPNBags">
+            <label for="ABNEBags" class="form-label">AB-</label>
+            <input type="number" min="0" max="100" value="0" class="form-control" id="ABNEBags">
           </div>
 
-          <label for="" class="form-label mb-0">O-</label>
           <div class="col-md-6">
-            <label for="ONEBags" class="form-label">Existing bags:</label>
-            <input type="number" class="form-control" id="ONEBags">
+            <label for="OPEBags" class="form-label">O+</label>
+            <input type="number" min="0" max="100" value="0" class="form-control" id="OPEBags">
           </div>
+
           <div class="col-md-6">
-            <label for="ONNBags" class="form-label">Neaded bags:</label>
-            <input type="number" class="form-control" id="ONNBags">
+            <label for="ONEBags" class="form-label">O-</label>
+            <input type="number" min="0" max="100" value="0" class="form-control" id="ONEBags">
           </div>
 
           <div class="col-12">
             <button type="submit" (click)="NEXT()" class="btn btn-danger" style="max-width: 100px;" id="btnSubmit">Submit</button>
           </div>
-          <!-- <button type="button" class="btn btn-link btn-go" routerLink="/signInI" routerLinkActive="active">sign in for individual</button>
-          <button type="button" class="btn btn-link btn-go" routerLink="/signUpI" routerLinkActive="active">sign up for individual</button> -->
+
         </div>
       </div>
     </div>

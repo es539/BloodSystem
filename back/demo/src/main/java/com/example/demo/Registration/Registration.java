@@ -93,18 +93,14 @@ public class Registration {
     public String signUp(@RequestParam String email, @RequestParam String phone, @RequestParam String pass, @RequestParam String name, @RequestParam String adrs,
                          @RequestParam String region, @RequestParam String tax, @RequestParam String start, @RequestParam String end,
                          @RequestParam String donationF, @RequestParam String donationT,
-                         @RequestParam int EAplus, @RequestParam int NAplus, @RequestParam int EAminus, @RequestParam int NAminus,
-                         @RequestParam int EBplus, @RequestParam int NBplus, @RequestParam int EBminus, @RequestParam int NBminus,
-                         @RequestParam int EABplus, @RequestParam int NABplus, @RequestParam int EABminus, @RequestParam int NABminus,
-                         @RequestParam int EOplus, @RequestParam int NOplus, @RequestParam int EOminus, @RequestParam int NOminus){
+                         @RequestParam int EAplus, @RequestParam int EAminus, @RequestParam int EBplus, @RequestParam int EBminus,
+                         @RequestParam int EABplus, @RequestParam int EABminus, @RequestParam int EOplus, @RequestParam int EOminus){
         DB adding = new DB();
         authData.setEmail(email); authData.setPhone(phone); authData.setPassword(pass); authData.setName(name);
         authData.setAddress(adrs); authData.setRegion(region); authData.setTax(tax);
         authData.setStartWork(start); authData.setEndWork(end);authData.setDonationtimeFrom(donationF);authData.setDonationtimeTo(donationT);
-        authData.setE_Aplus(EAplus); authData.setN_Aplus(NAplus); authData.setE_Aminus(EAminus); authData.setN_Aminus(NAminus);
-        authData.setE_Bplus(EBplus); authData.setN_Bplus(NBplus); authData.setE_Bminus(EBminus); authData.setN_Bminus(NBminus);
-        authData.setE_ABplus(EABplus); authData.setN_ABplus(NABplus); authData.setE_ABminus(EABminus); authData.setN_ABminus(NABminus);
-        authData.setE_Oplus(EOplus); authData.setN_Oplus(NOplus); authData.setE_Ominus(EOminus); authData.setN_Ominus(NOminus);
+        authData.setE_Aplus(EAplus); authData.setE_Aminus(EAminus); authData.setE_Bplus(EBplus); authData.setE_Bminus(EBminus);
+        authData.setE_ABplus(EABplus); authData.setE_ABminus(EABminus); authData.setE_Oplus(EOplus); authData.setE_Ominus(EOminus);
         String response;
         if(adding.checkForNoduplicateAuthorities(tax)==false){
             response = adding.addAuthority(authData);
@@ -160,34 +156,18 @@ public class Registration {
     }
     @GetMapping("/gEAp")
     public String gExist_Aplus(){ return String.valueOf(authData.getE_Aplus()); }
-    @GetMapping("/gNAp")
-    public String gNeed_Aplus(){ return String.valueOf(authData.getN_Aplus()); }
     @GetMapping("/gEAm")
     public String gExist_Aminus(){ return String.valueOf(authData.getE_Aminus()); }
-    @GetMapping("/gNAm")
-    public String gNeed_Aminus(){ return String.valueOf(authData.getN_Aminus()); }
     @GetMapping("/gEBp")
     public String gExist_Bplus(){ return String.valueOf(authData.getE_Bplus()); }
-    @GetMapping("/gNBp")
-    public String gNeed_Bplus(){ return String.valueOf(authData.getN_Bplus()); }
     @GetMapping("/gEBm")
     public String gExist_Bminus(){ return String.valueOf(authData.getE_Bminus()); }
-    @GetMapping("/gNBm")
-    public String gNeed_Bminus(){ return String.valueOf(authData.getN_Bminus()); }
     @GetMapping("/gEABp")
     public String gExist_ABplus(){ return String.valueOf(authData.getE_ABplus()); }
-    @GetMapping("/gNABp")
-    public String gNeed_ABplus(){ return String.valueOf(authData.getN_ABplus()); }
     @GetMapping("/gEABm")
     public String gExist_ABminus(){ return String.valueOf(authData.getE_ABminus()); }
-    @GetMapping("/gNABm")
-    public String gNeed_ABminus(){ return String.valueOf(authData.getN_ABminus()); }
     @GetMapping("/gEOp")
     public String gExist_Oplus(){ return String.valueOf(authData.getE_Oplus()); }
-    @GetMapping("/gNOp")
-    public String gNeed_Oplus(){ return String.valueOf(authData.getN_Oplus()); }
     @GetMapping("/gEOm")
     public String gExist_Ominus(){ return String.valueOf(authData.getE_Ominus()); }
-    @GetMapping("/gNOm")
-    public String gNeed_Ominus(){ return String.valueOf(authData.getN_Ominus()); }
 }
