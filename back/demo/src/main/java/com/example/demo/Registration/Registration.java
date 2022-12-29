@@ -1,6 +1,7 @@
 package com.example.demo.Registration;
 
 import com.example.demo.DataBase.DB;
+import com.example.demo.BloodTransfution.Donation;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -31,6 +32,8 @@ public class Registration {
                          @RequestParam int age, @RequestParam int weight,@RequestParam String BT,
                          @RequestParam String adrs, @RequestParam String region){
         DB adding = new DB();
+        String city =adding.getCity(region);
+        Donation d = new Donation();
         userData.setId(id);
         userData.setPassword(pass);
         userData.setName(name);
@@ -39,6 +42,7 @@ public class Registration {
         userData.setBloodtype(BT);
         userData.setAddress(adrs);
         userData.setRegion(region);
+        userData.setCity(city);
 
         String response;
         if(adding.checkForNoduplicateUsers(id)==false){
@@ -46,6 +50,9 @@ public class Registration {
         }else{
             response = "invalid";
         }
+        d.sameRegionAuth(region);
+        d.sameCityAuth(region);
+        d.farAuth(region);
         return response;
     }
 
@@ -96,7 +103,8 @@ public class Registration {
                          @RequestParam int EAplus, @RequestParam int EAminus, @RequestParam int EBplus, @RequestParam int EBminus,
                          @RequestParam int EABplus, @RequestParam int EABminus, @RequestParam int EOplus, @RequestParam int EOminus){
         DB adding = new DB();
-        authData.setEmail(email); authData.setPhone(phone); authData.setPassword(pass); authData.setName(name);
+        String city = adding.getCity(region);
+        authData.setEmail(email); authData.setPhone(phone); authData.setPassword(pass); authData.setName(name);authData.setCity(city);
         authData.setAddress(adrs); authData.setRegion(region); authData.setTax(tax);
         authData.setStartWork(start); authData.setEndWork(end);authData.setDonationtimeFrom(donationF);authData.setDonationtimeTo(donationT);
         authData.setE_Aplus(EAplus); authData.setE_Aminus(EAminus); authData.setE_Bplus(EBplus); authData.setE_Bminus(EBminus);
