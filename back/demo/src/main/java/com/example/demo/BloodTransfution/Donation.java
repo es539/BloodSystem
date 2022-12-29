@@ -27,7 +27,7 @@ public class Donation {
             }
             if(res.length()!=0){
             res=res.substring(0,res.length()-1);}
-            System.out.println("same region>>>"+res);
+            System.out.println(res);
         } catch (SQLException e) {
 
             e.printStackTrace();
@@ -57,7 +57,7 @@ public class Donation {
             }
             if(res.length()!=0){
                 res=res.substring(0,res.length()-1);}
-            System.out.println("same city>>>"+res);
+            System.out.println(res);
         } catch (SQLException e) {
 
             e.printStackTrace();
@@ -86,7 +86,7 @@ public class Donation {
             }
             if(res.length()!=0){
                 res=res.substring(0,res.length()-1);}
-            System.out.println("far auth>>>"+res);
+            System.out.println(res);
         } catch (SQLException e) {
 
             e.printStackTrace();
