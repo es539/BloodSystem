@@ -150,72 +150,11 @@ insert into regions values ("Al Fayyum","New Faiyum");
 insert into regions values ("Al Fayyum","Sinnuris");
 insert into regions values ("Al Fayyum","Tamiya");
 insert into regions values ("Al Fayyum","Yousef El Seddik");
-select * from authority;
-select * from civilregistry;
-select * from authoritytax;
-UPDATE bagsNumber SET Aplus_exist = 7 WHERE tax = '162359781';
 
-select * from bagsNumber where tax = '162359781';
 
-create table donation(
-fromtype varchar(10) not null,
-totype varchar(10) not null
-);
-insert into donation values ('A+','A+');
-insert into donation values ('A+','AB+');
-insert into donation values ('A-','A+');
-insert into donation values ('A-','A-');
-insert into donation values ('A-','AB+');
-insert into donation values ('A-','AB-');
-insert into donation values ('B+','B+');
-insert into donation values ('B+','AB+');
-insert into donation values ('B-','AB+');
-insert into donation values ('B-','AB-');
-insert into donation values ('B-','B+');
-insert into donation values ('B-','B-');
-insert into donation values ('O+','AB+');
-insert into donation values ('O+','B+');
-insert into donation values ('O+','A+');
-insert into donation values ('O+','O+');
-insert into donation values ('O-','AB+');
-insert into donation values ('O-','AB-');
-insert into donation values ('O-','A+');
-insert into donation values ('O-','A-');
-insert into donation values ('O-','B+');
-insert into donation values ('O-','B-');
-insert into donation values ('O-','O+');
-insert into donation values ('O-','O-');
-insert into donation values ('AB+','AB+');
-insert into donation values ('AB-','AB+');
-insert into donation values ('AB-','AB-');
 
-create table acception(
-btype varchar(10) not null,
-acceptFrom varchar(10) not null
-);
-insert into donation values ('A+','A+');
-insert into donation values ('A+','A-');
-insert into donation values ('A+','O+');
-insert into donation values ('A+','O-');
-insert into donation values ('A-','A-');
-insert into donation values ('A-','O-');
-insert into donation values ('B+','O+');
-insert into donation values ('B+','B+');
-insert into donation values ('B+','O-');
-insert into donation values ('B+','B-');
 
-insert into donation values ('B-','B-');
-insert into donation values ('B-','O-');
-insert into donation values ('AB+','O-');
-insert into donation values ('AB+','O+');
-insert into donation values ('AB+','AB+');
-insert into donation values ('AB+','AB-');
-insert into donation values ('AB+','A+');
-insert into donation values ('AB+','A-');
-insert into donation values ('AB+','B+');
-insert into donation values ('AB+','B-');
-insert into donation values ('O-','O-');
-insert into donation values ('AB-','AB-');
-insert into donation values ('AB-','B-');
-insert into donation values ('AB-','A-');
-insert into donation values ('AB-','O-');
+
+
+
+

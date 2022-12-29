@@ -50,9 +50,9 @@ public class Registration {
         }else{
             response = "invalid";
         }
-        d.sameRegionAuth(region);
-        d.sameCityAuth(region);
-        d.farAuth(region);
+        d.sameRegionAuth();
+        d.sameCityAuth();
+        d.farAuth();
         return response;
     }
 
