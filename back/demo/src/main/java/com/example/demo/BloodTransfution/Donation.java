@@ -127,8 +127,9 @@ public class Donation {
         return res;
     }
 
-  /*  public String donationTicket (String nameAuth, String addrs){
-        final String QUERY = "select * from authority where authName != \"" + nameAuth + "\" and address != \""+addrs+"\";";
+   public String donationTicket (String nameAuth, String addrs){
+        String res ="";
+        final String QUERY = "select * from authority where authName = \"" + nameAuth + "\" and address = \""+addrs+"\";";
 
         // Open a connection
         try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -144,9 +145,11 @@ public class Donation {
                 String phone = rs.getString("phone");
                 String c = rs.getString("city");
                 String reg = rs.getString("region");
+                String wTimeStart = rs.getString("workinghours_start");
+                String wTimeClose = rs.getString("workinghours_close");
                 String dTimeFrom = rs.getString("donationtimeFrom");
                 String dTimeTo =rs.getString("donationtimeTo");
-                res=res+name+","+address+","+reg+","+c+","+phone+","+dTimeFrom+","+dTimeTo+",";
+                res=res+name+","+phone+","+address+","+c+","+reg+","+wTimeStart+","+wTimeClose+","+dTimeFrom+","+dTimeTo+",";
             }
             if(res.length()!=0){
                 res=res.substring(0,res.length()-1);}
@@ -155,8 +158,8 @@ public class Donation {
 
             e.printStackTrace();
         }
-
-    }*/
+        return res;
+    }
   Authority chosenAuth = new Authority();
     @GetMapping("/chooseAuth")
     String chosenAuth(@RequestParam String name, @RequestParam String address){
