@@ -5,7 +5,7 @@ import java.sql.*;
 public class DoneList {
     static final String DB_URL = "jdbc:mysql://localhost:3306";
     static final String USER = "root";
-    static final String PASS = "aboshady2001@Esraa";
+    static final String PASS = "2972001333";
 
     public String getDoneListAccept(){
         String res ="";
@@ -34,6 +34,21 @@ public class DoneList {
         }
         return res;
 
+    }
+    public String setDoneListAccept(String name,long id, String BT, String date){
+        final String QUERY = "insert into doneListAccept values('"+name+"'," + id+",'"+BT+"','"+date+"');";
+        System.out.println(QUERY);
+        try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement stmt = conn.createStatement();
+        ) {
+            String sql = "USE systemdb";
+            stmt.executeUpdate(sql);
+            stmt.executeUpdate(QUERY);
+            System.out.println("inserted successfully...");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "valid";
     }
 
     public String getdoneListDonate(){
@@ -64,4 +79,20 @@ public class DoneList {
         return res;
 
     }
+    public String setDoneListDonate(String name,long id, String BT, String date){
+        final String QUERY = "insert into doneListDonate values('"+name+"'," + id+",'"+BT+"','"+date+"');";
+        System.out.println(QUERY);
+        try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement stmt = conn.createStatement();
+        ) {
+            String sql = "USE systemdb";
+            stmt.executeUpdate(sql);
+            stmt.executeUpdate(QUERY);
+            System.out.println("inserted successfully...");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "valid";
+    }
+
 }
