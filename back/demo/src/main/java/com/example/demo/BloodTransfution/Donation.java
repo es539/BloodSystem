@@ -126,10 +126,10 @@ public class Donation {
         }
         return res;
     }
-
-   public String donationTicket (String nameAuth, String addrs){
+    Authority chosenAuth = new Authority();
+   public String donationTicket (){
         String res ="";
-        final String QUERY = "select * from authority where authName = \"" + nameAuth + "\" and address = \""+addrs+"\";";
+        final String QUERY = "select * from authority where authName = \"" + chosenAuth.getName() + "\" and address = \""+chosenAuth.getAddress()+"\";";
 
         // Open a connection
         try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -140,27 +140,21 @@ public class Donation {
             ResultSet rs = stmt.executeQuery(QUERY);
             while (rs.next()) {
                 //Display values
-                String name = rs.getString("authName");
-                String address= rs.getString("address");
-                String phone = rs.getString("phone");
-                String c = rs.getString("city");
-                String reg = rs.getString("region");
-                String wTimeStart = rs.getString("workinghours_start");
-                String wTimeClose = rs.getString("workinghours_close");
-                String dTimeFrom = rs.getString("donationtimeFrom");
-                String dTimeTo =rs.getString("donationtimeTo");
-                res=res+name+","+phone+","+address+","+c+","+reg+","+wTimeStart+","+wTimeClose+","+dTimeFrom+","+dTimeTo+",";
+                chosenAuth.setPhone(rs.getString("phone"));
+                chosenAuth.setCity(rs.getString("city"));
+                chosenAuth.setRegion( rs.getString("region"));
+                chosenAuth.setStartWork(rs.getString("workinghours_start"));
+                chosenAuth.setEndWork( rs.getString("workinghours_close"));
+                chosenAuth.setDonationtimeFrom( rs.getString("donationtimeFrom"));
+                chosenAuth.setDonationtimeTo(rs.getString("donationtimeTo"));
             }
-            if(res.length()!=0){
-                res=res.substring(0,res.length()-1);}
-            System.out.println(res);
         } catch (SQLException e) {
 
             e.printStackTrace();
         }
-        return res;
+        return "done";
     }
-  Authority chosenAuth = new Authority();
+
     @GetMapping("/chooseAuth")
     String chosenAuth(@RequestParam String name, @RequestParam String address){
         chosenAuth.setName(name);
@@ -168,4 +162,27 @@ public class Donation {
         System.out.println("name" + chosenAuth.getName());
         System.out.println("address" + chosenAuth.getAddress());
         return "Done";}
+    @GetMapping("/chosenAuthName")
+    String getChosenAuthName(){ return chosenAuth.getName(); }
+    @GetMapping("/chosenAuthAddress")
+    String getChosenAuthAddressName(){ return chosenAuth.getAddress(); }
+
+    @GetMapping("/chosenAuthPhone")
+    String getChosenAuthPhone(){ return chosenAuth.getPhone(); }
+    @GetMapping("/chosenAuthRegion")
+    String getChosenAuthAddressRegion(){ return chosenAuth.getRegion(); }
+    @GetMapping("/chosenAuthCity")
+    String getChosenAuthCity(){ return chosenAuth.getCity(); }
+    @GetMapping("/chosenAuthWStart")
+    String getChosenAuthAddressWStart(){ return chosenAuth.getStartWork(); }
+    @GetMapping("/chosenAuthWClose")
+    String getChosenAuthWclose(){ return chosenAuth.getEndWork(); }
+    @GetMapping("/chosenAuthDFrom")
+    String getChosenAuthAddressDFrom(){ return chosenAuth.getDonationtimeFrom(); }
+    @GetMapping("/chosenAuthDTo")
+    String getChosenAuthAddressDTo(){ return chosenAuth.getDonationtimeTo(); }
+
+    @GetMapping("/UserName")
+    String getUserName(){ return Registration.userData.getName(); }
+
 }
