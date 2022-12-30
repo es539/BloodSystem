@@ -23,3 +23,8 @@ button{
     overflow-y: scroll;
     scroll-behavior: smooth;
 }
+.confirm{
+    position: fixed;
+    top: 94vh;
+    right: 2px;
+}
