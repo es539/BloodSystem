@@ -21,9 +21,13 @@ export class DonationComponent implements OnInit {
   malaria: boolean = false
   communicableDiseases: boolean = false
 
+  // yes or no
   bDisease: boolean = false
+  goodBlood: boolean = false
 
+  //yes or no
   anemia: boolean = false
+  noAnemia: boolean = false
 
   diabetes: boolean = false
   hypert: boolean = false
@@ -31,11 +35,17 @@ export class DonationComponent implements OnInit {
   badHeart: boolean = false
   chronicDiseases: boolean = false
 
+  //yes or no
   pregnant: boolean = false
+  notPregnant: boolean = false
 
+  //yes or no
   tatto: boolean = false
+  noTatto: boolean = false
 
+  //yes or no
   donated12: boolean = false
+  notDonated12: boolean = false
 
   valid: boolean = true
 
@@ -89,12 +99,27 @@ export class DonationComponent implements OnInit {
       this.bDisease = true
     }
   }
+  hasNOTBloodProblem(){
+    const radio = (<HTMLInputElement>document.getElementById('goodBlood'))
+    if(radio?.checked){
+      console.log("has NOT blood Problem")
+      this.goodBlood = true
+    }
+  }
 
   hasAnemia(){
     const radio = (<HTMLInputElement>document.getElementById('anemia'))
     if(radio?.checked){
       console.log("has anemia")
       this.anemia = true
+    }
+  }
+
+  hasNOTAnemia(){
+    const radio = (<HTMLInputElement>document.getElementById('noAnemia'))
+    if(radio?.checked){
+      console.log("has NOT anemia")
+      this.noAnemia = true
     }
   }
 
@@ -149,11 +174,27 @@ export class DonationComponent implements OnInit {
     }
   }
 
+  isNOTPregnant(){
+    const checkbox = (<HTMLInputElement>document.getElementById('pregnantFalse'))
+    if(checkbox?.checked){
+      console.log("is NOT pregnant")
+      this.notPregnant = true
+    }
+  }
+
   hasTatto(){
     const checkbox = (<HTMLInputElement>document.getElementById('tatto'))
     if(checkbox?.checked){
       console.log("has tatto")
       this.tatto = true
+    }
+  }
+
+  hasNOTatto(){
+    const checkbox = (<HTMLInputElement>document.getElementById('noTatto'))
+    if(checkbox?.checked){
+      console.log("has NOT tatto")
+      this.noTatto = true
     }
   }
 
@@ -165,26 +206,46 @@ export class DonationComponent implements OnInit {
     }
   }
 
+  hasNOTDonaed12(){
+    const checkbox = (<HTMLInputElement>document.getElementById('firstDonate'))
+    if(checkbox?.checked){
+      console.log("has NOT donated 12")
+      this.notDonated12 = true
+    }
+  }
+
   INFO(){
     this.hasCommunicableDiseases()
     this.hasBloodProblem()
+    this.hasNOTBloodProblem()
     this.hasAnemia()
+    this.hasNOTAnemia()
     this.hasChronicDiseases()
     this.isPregnant()
+    this.isNOTPregnant()
     this.hasTatto()
+    this.hasNOTatto()
     this.hasDonaed12()
+    this.hasNOTDonaed12()
   }
 
   isValidDonator(){
     this.INFO()
-    if(this.communicableDiseases || this.bDisease || this.anemia || this.chronicDiseases || this.pregnant || this.tatto || this.donated12){
+    if( (!this.bDisease&&!this.goodBlood)
+    || (!this.anemia&&!this.noAnemia) 
+    || (!this.pregnant&&!this.notPregnant) 
+    || (!this.donated12&&!this.notDonated12)){
+      alert('please, choose either YES or NO')
+    }
+    else if(this.communicableDiseases || this.bDisease || this.anemia || this.chronicDiseases || this.pregnant || this.tatto || this.donated12){
       console.log("invalid donator")
       this.valid = false
       this.router.navigateByUrl("/invalidDonate")
     }
     else{
       console.log("valid donator")
-      // this.router.navigateByUrl("/validDonator")
+      this.valid = true
+      this.router.navigateByUrl("/donateList")
     }
   }
 
