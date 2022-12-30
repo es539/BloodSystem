@@ -1,11 +1,9 @@
 package com.example.demo.BloodTransfution;
 
 import com.example.demo.DataBase.DB;
+import com.example.demo.Registration.Authority;
 import com.example.demo.Registration.Registration;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.*;
 @RestController
@@ -233,4 +231,17 @@ public class Acception {
         }
         return res;
     }
+
+    Authority chosenAuth = new Authority();
+    @GetMapping("/ChooseAuthority")
+    String chosenAuth(@RequestParam String name, @RequestParam String address){
+        chosenAuth.setName(name);
+        chosenAuth.setAddress(address);
+        System.out.println("name" + chosenAuth.getName());
+        System.out.println("address" + chosenAuth.getAddress());
+        return "Done";
+    }
+
+
+
 }
