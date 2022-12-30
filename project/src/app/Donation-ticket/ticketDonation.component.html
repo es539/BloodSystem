@@ -86,52 +86,52 @@
                         </div>
                         <div class="col-10">
                             <h5 class="text-start mt-2" style="font-size:20px; font-weight:900;">Hallo <span
-                                class="text-danger">Ahmed</span>,</h5>
+                                class="text-danger">{{userName}}</span>,</h5>
                             <h5 class="text-start mt-2" style="font-size:20px; font-weight:900;">Your <span
-                                    class="text-danger">donation</span> appointment is booked</h5>
+                                    class="text-danger">donation</span> appointment: </h5>
                                     <br>
                             <div class="row">
                                 <div class="col-6">
                                     <label for="name" class="form-label bold">Name</label>
-                                    <p>Dar El-Fouaad</p>
+                                    <p>{{name}}</p>
                                 </div>
                                 <div class="col-6">
                                     <label for="phone" class="form-label bold">Phone Number</label>
-                                    <p>01096692075</p>
+                                    <p>{{phone}}</p>
                                 </div>
                                 <div class="col-4">
                                     <label for="address" class="form-label bold">Address</label>
-                                    <p>1234 Main St</p>
+                                    <p>{{address}}</p>
                                 </div>
                                 <div class="col-4">
                                     <label for="city" class="form-label bold">City</label>
-                                    <p>Cairo</p>
+                                    <p>{{city}}</p>
                                 </div>
                                 <div class="col-4">
                                     <label for="rigon" class="form-label bold">Region</label>
-                                    <p>El-Haram</p>
+                                    <p>{{region}}</p>
                                 </div>
                                 <label for="" class="form-label mb-0 bold">Working Hours</label>
                                 <div class="col-md-6">
                                     <label for="wHourf" class="form-label bold">From</label>
-                                    <p>12:00 PM</p>
+                                    <p>{{wTimeF}}</p>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="wHourt" class="form-label bold"> To</label>
-                                    <p>12:00 AM</p>
+                                    <p>{{wTimeT}}</p>
                                 </div>
                                 <label for="" class="form-label mb-0 bold">Donation Time</label>
                                 <div class="col-md-6">
                                     <label for="dTimeF" class="form-label bold">From</label>
-                                    <P>3:00 PM</P>
+                                    <P>{{dTimeF}}</P>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="dTimeT" class="form-label bold">To</label>
-                                    <P>7:00 PM</P>
+                                    <P>{{dTimeT}}</P>
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <button class="btn btn-danger col-2 me-3">Confirm</button>
-                                    <button class="btn btn-danger col-2 ">Cancel</button>
+                                    <button class="btn btn-danger col-2 me-3" (click)="Book()">Book</button>
+                                    <button class="btn btn-danger col-2" routerLink="/donateList" routerLinkActive="active">Cancel</button>
                                 </div>
                             </div>
                         </div>
