@@ -25,7 +25,7 @@ public class Acception {
         String res ="";
         System.out.println(region);
         System.out.println(BT);
-        String query = "select authName,phone,address,donationtimeFrom,donationtimeTo from authority";
+        String query = "select authName,address,region,city,phone,donationtimeFrom,donationtimeTo from authority";
 
 
 
@@ -65,10 +65,12 @@ public class Acception {
                 //Display values
                 String name = rs.getString("authName");
                 String address= rs.getString("address");
+                String authRegion = rs.getString("region");
+                String authCity = rs.getString("city");
                 String phone = rs.getString("phone");
                 String dTimeFrom = rs.getString("donationtimeFrom");
                 String dTimeTo =rs.getString("donationtimeTo");
-                res=res+name+","+address+","+phone+","+dTimeFrom+","+dTimeTo+",";
+                res=res+name+","+address+","+authRegion+","+authCity+","+phone+","+dTimeFrom+","+dTimeTo+",";
 
             }
             if(res.length()!=0){
@@ -88,7 +90,7 @@ public class Acception {
         String res ="";
         DB db = new DB();
         String city = db.getCity(region);
-        String query = "select authName,address,region,phone,donationtimeFrom,donationtimeTo from authority";
+        String query = "select authName,address,region,city,phone,donationtimeFrom,donationtimeTo from authority";
 
         if(BT.equals("A positive")){
             query += " INNER JOIN bagsNumber  ON authority.tax = bagsNumber.tax where region != \"" + region+"\" " +
@@ -128,10 +130,11 @@ public class Acception {
                 String name = rs.getString("authName");
                 String address= rs.getString("address");
                 String authRegion = rs.getString("region");
+                String authCity = rs.getString("city");
                 String phone = rs.getString("phone");
                 String dTimeFrom = rs.getString("donationtimeFrom");
                 String dTimeTo =rs.getString("donationtimeTo");
-                res=res+name+","+address+","+authRegion+","+phone+","+dTimeFrom+","+dTimeTo+",";
+                res=res+name+","+address+","+authRegion+","+authCity+","+phone+","+dTimeFrom+","+dTimeTo+",";
 
             }
             if(res.length()!=0){
