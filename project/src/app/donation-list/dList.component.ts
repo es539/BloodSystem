@@ -26,6 +26,8 @@ export class DonationListComponent implements OnInit {
 
   authNum: any = 1
 
+  choosenNum: any
+
   sameRegionAuth: any
   sameCityAuth: any
   otherCitiesAuth: any
@@ -39,7 +41,7 @@ export class DonationListComponent implements OnInit {
    showAuth(){
     const newContainer = document.createElement("div");
     newContainer.className = "containerDon";
-    newContainer.innerHTML += '<div>Authority number' + this.authNum++ + '</div>'
+    newContainer.innerHTML += '<div>Authority number #' + this.authNum++ + '</div>'
       + '<div class="proContent" style="max-width: 700px;">' 
         + '<div class="scroll-container">' 
           + '<div class="card p-3 border border-danger m-3">' 
@@ -47,6 +49,8 @@ export class DonationListComponent implements OnInit {
 
               + '<p class="col-12" id="hos-name">'+ this.name +'</p>' 
               + '<p class="col-6" id="hos-addr">' + this.address + '</p>'  
+              + '<p class="col-6" id="hos-region">' + this.region + '</p>' 
+              + '<p class="col-6" id="hos-city">' + this.city + '</p>' 
               +'<br>'
               +'<p class="col-12" id="hos-numb">' + this.phone + '</p>'
               +'<p class="col-12" for="">Donation time:</p>'
@@ -74,15 +78,16 @@ export class DonationListComponent implements OnInit {
       this.res1 = this.sameRegionAuth.split(",");
       
       console.log(this.res1)
-      for(var i = 0; i < this.res1.length-1; i+=5){
+      for(var i = 0; i < this.res1.length-1; i+=7){
         this.name = this.res1[i]
         this.address = this.res1[i+1]
-        this.phone = this.res1[i+2]
-        this.timeFrom = this.res1[i+3]
-        this.timeTo = this.res1[i+4]
+        this.region = this.res1[i+2]
+        this.city = this.res1[i+3]
+        this.phone = this.res1[i+4]
+        this.timeFrom = this.res1[i+5]
+        this.timeTo = this.res1[i+6]
 
         //html
-        console.log("in for loop now!")
         this.showAuth()
       }
     })
@@ -102,13 +107,14 @@ export class DonationListComponent implements OnInit {
       this.res2 = this.sameCityAuth.split(",");
       
       console.log(this.res2)
-      for(var i = 0; i < this.res2.length-1; i+=6){
+      for(var i = 0; i < this.res2.length-1; i+=7){
         this.name = this.res2[i]
         this.address = this.res2[i+1]
         this.region = this.res2[i+2]
-        this.phone = this.res2[i+3]
-        this.timeFrom = this.res2[i+4]
-        this.timeTo = this.res2[i+5]
+        this.city = this.res2[i+3]
+        this.phone = this.res2[i+4]
+        this.timeFrom = this.res2[i+5]
+        this.timeTo = this.res2[i+6]
 
         //html
         this.showAuth()
@@ -145,16 +151,13 @@ export class DonationListComponent implements OnInit {
     })
   }
 
-  choose(name: any, address: any){
+  choose(Name: any, Address: any){
     console.log("choose calling")
-    const authNumber = (<HTMLInputElement>document.getElementById('aNum'))
-    this.authNum = authNumber.value
-    console.log("user chose authority number: " + this.authNum)
     this.http.get('http://localhost:6060/savior/chooseAuth',{ 
     responseType:'text',
     params:{
-      name: name,
-      address: address
+      name: Name,
+      address: Address
     },
     observe:'response'
     }).subscribe(response=>{
@@ -166,9 +169,18 @@ export class DonationListComponent implements OnInit {
 
   confirm(){
     console.log("confirm calling")
+
+    const authNumber = (<HTMLInputElement>document.getElementById('aNum'))
+    this.choosenNum = authNumber.value
+    console.log("user chose authority number: " + this.choosenNum)
+
     this.res = this.res1.concat(this.res2, this.res3)
     console.log("the concatenated res: " + this.res)
-    this.choose(this.res[(this.authNum-1)*7], this.res[( (this.authNum-1)*7 ) + 1])
+    var nameInd = (this.choosenNum-1)*7
+    var addressInd = ( (this.choosenNum-1)*7 ) + 1
+    console.log("name index: " + nameInd)
+    console.log("address index: " + addressInd)
+    this.choose(this.res[nameInd], this.res[addressInd])
   }
 
 }
