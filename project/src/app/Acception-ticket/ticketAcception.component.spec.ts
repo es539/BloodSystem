@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-@Component({
-  selector: 'app-Donation-ticket',
-  templateUrl: './ticketAcception.component.html',
-  styleUrls: ['./ticketAcception.component.css']
-})
-export class AcceptionTicketComponent implements OnInit {
+import { AcceptionTicketComponent } from './ticketAcception.component';
 
-  constructor() { }
+describe('DonationTicketComponent', () => {
+  let component: AcceptionTicketComponent;
+  let fixture: ComponentFixture<AcceptionTicketComponent>;
 
-  ngOnInit(): void {
-  }
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ AcceptionTicketComponent ]
+    })
+    .compileComponents();
+  });
 
-}
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AcceptionTicketComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
