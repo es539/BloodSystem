@@ -18,6 +18,7 @@ import { DonationComponent } from './donation/donation.component'
 import { InvalidDonateComponent } from './invalidDonate/invalidDonate.component'
 import { DonationListComponent } from './donation-list/dList.component'
 import { DonationTicketComponent } from './Donation-ticket/ticketDonation.component'
+import { AcceptionTicketComponent } from './Acception-ticket/ticketAcception.component'
 import { AcceptionListComponent } from './acception-list/aList.component'
 import { HelperComponent } from './Helper/Helper.component'
 
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'invalidDonate', component:InvalidDonateComponent},
   { path: 'donateList', component:DonationListComponent},
   { path: 'donationTicket', component:DonationTicketComponent},
+  { path: 'acceptionTicket', component:AcceptionTicketComponent},
   { path: 'acceptList', component:AcceptionListComponent},
   { path: 'helper', component:HelperComponent}
 ];
