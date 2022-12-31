@@ -25,6 +25,7 @@ export class AcceptionTicketComponent implements OnInit {
   dTimeT: any = this.getDTimeT()
   wTimeF: any = this.getWTimeF()
   wTimeT: any = this.getWTimeT()
+  cartt: any
   
   response: any 
 
